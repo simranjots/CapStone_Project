@@ -2,6 +2,7 @@
 
 import UIKit
 import Firebase
+import Toast_Swift
 
 
 class MenuTVC: UIViewController {
@@ -25,11 +26,13 @@ class MenuTVC: UIViewController {
 
 }
 func fetchProducts(_ completion: @escaping ([MenuMC]) -> Void) {
-let ref = Firestore.firestore().collection("Menu")
+    let ref = Firestore.firestore().collection("Menu").document("1").collection("menu")
 ref.addSnapshotListener { (snapshot, error) in
     guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
         return
+        
     }
+
     completion(snapshot.documents.compactMap( {MenuMC(dictionary: $0.data())} ))
 }
 }

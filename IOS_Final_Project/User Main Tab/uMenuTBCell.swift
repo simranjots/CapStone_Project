@@ -23,4 +23,15 @@ class uMenuTBCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    func configure(withProduct menuItem: UserMC) {
+           
+           dishLabel.text = menuItem.name
+      //  menuPrice.text = "\(menuItem.price ?? 0)"
+       
+        // Load the image using SDWebImage
+        dishImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "menu.png"))
+
+
+}
 }

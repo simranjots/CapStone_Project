@@ -1,12 +1,9 @@
-//
-//  MenuTVCell.swift
-//  IOS_Final_Project
-//
-//  Created by Kuldeep on 2021-02-07.
-//  Copyright © 2021 user168953. All rights reserved.
-//
+
 
 import UIKit
+import Firebase
+import FirebaseStorage
+import SDWebImage
 
 class MenuTVCell: UITableViewCell {
 
@@ -17,7 +14,6 @@ class MenuTVCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -28,19 +24,22 @@ class MenuTVCell: UITableViewCell {
            
            menuName.text = menuItem.name
         menuPrice.text = "\(menuItem.price ?? 0)"
+       
+        // Load the image using SDWebImage
+        menuImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "menu.png"))
 
-//           fetchImage(withURL: product.imageUrl ) { (image) in
-//              productImage.image = image
-         }
-      }
-
+//        fetchImage(withURL: menuItem.imageLink! ) { (image) in
+//            self.menuImg.image = image
+//         }
+//      }
+//
 //      func fetchImage(withURL url: String, _ completion: @escaping (UIImage) -> Void) {
-//           let ref = Storage.storage().reference(forURL: url)
+//       let ref = Storage.storage().reference(forURL: url)
 //           ref.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
 //               guard error == nil, let imageData = data, let image = UIImage(data: imageData) else {
 //                   return
 //               }
 //               completion(image)
 //           }
-//       }
-//}
+      }
+}
