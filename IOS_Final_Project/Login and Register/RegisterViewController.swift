@@ -46,7 +46,7 @@ class RegisterViewController: UIViewController {
         if rstown == "Yes" {
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "restDetails") as! RestaurantRegisterVC
-            vc.id = p
+            vc.id = UUID().uuidString
             vc.name = n
             vc.phone = p
             vc.address = a
@@ -65,13 +65,14 @@ class RegisterViewController: UIViewController {
                     if (success) {
                         
                         let db = Firestore.firestore()
-                        let datas = ["Id":p,
-                            "Name": n,
-                            "Email":email,
-                            "Password":password,
-                            "Phone":p,
-                            "Address":a,
-                            "Rest_ownr":rstown]
+                        let datas = ["Id":UUID().uuidString,
+                            "name": n,
+                            "email":email,
+                            "password":password,
+                            "phone":p,
+                            "address":a,
+                            "rest_ownr":rstown,
+                            "rest_Join_Id":""]
                         db.collection("Users").document(p!).setData(datas as [String : Any])
                            
                         self.view.makeToast(message)

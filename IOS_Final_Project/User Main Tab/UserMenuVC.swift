@@ -127,6 +127,8 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         
     }
 
+
+
 func FetchTodays(_ completion: @escaping ([UserMC]) -> Void) {
     let ref = Firestore.firestore().collection("Menu").document("2").collection("Todaysp")
 ref.addSnapshotListener { (snapshot, error) in
