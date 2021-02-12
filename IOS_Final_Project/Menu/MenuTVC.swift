@@ -26,7 +26,7 @@ class MenuTVC: UIViewController {
 
 }
 func fetchProducts(_ completion: @escaping ([MenuMC]) -> Void) {
-    let ref = Firestore.firestore().collection("Menu").document("1").collection("menu")
+    let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana")
 ref.addSnapshotListener { (snapshot, error) in
     guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
         return

@@ -48,7 +48,7 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
           print("Sign out error")
         }
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "uLogin") as UIViewController
+        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "restJoinPage") as UIViewController
         self.present(vc, animated: true, completion: nil)
 
     }
@@ -130,8 +130,8 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
 
 func FetchTodays(_ completion: @escaping ([UserMC]) -> Void) {
-    let ref = Firestore.firestore().collection("Menu").document("2").collection("Todaysp")
-ref.addSnapshotListener { (snapshot, error) in
+    let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana")
+    ref.addSnapshotListener { (snapshot, error) in
     guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
         return
         

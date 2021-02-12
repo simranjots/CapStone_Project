@@ -76,6 +76,9 @@ class RegisterViewController: UIViewController {
                         db.collection("Users").document(p!).setData(datas as [String : Any])
                            
                         self.view.makeToast(message)
+                        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "login") as! ViewController
+                        self.present(vc, animated: true, completion: nil)
                     } else {
                         self.view.makeToast(message)
                     }
