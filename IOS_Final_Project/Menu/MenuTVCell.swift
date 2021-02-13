@@ -26,7 +26,7 @@ class MenuTVCell: UITableViewCell {
         menuPrice.text = "\(menuItem.price ?? 0)"
        
         // Load the image using SDWebImage
-        menuImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "menu.png"))
+        menuImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "image_1.png"))
 
 //        fetchImage(withURL: menuItem.imageLink! ) { (image) in
 //            self.menuImg.image = image

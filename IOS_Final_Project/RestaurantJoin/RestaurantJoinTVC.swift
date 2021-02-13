@@ -28,6 +28,14 @@ class RestaurantJoinTVC: UIViewController {
 
 
 }
+    
+    @IBAction func goBackTOMenu(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "menu") as UIViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
 }
     func fetchRestaurants(_ completion: @escaping ([RestaurentJoinMC]) -> Void) {
         let ref = Firestore.firestore().collection("Restaurants")

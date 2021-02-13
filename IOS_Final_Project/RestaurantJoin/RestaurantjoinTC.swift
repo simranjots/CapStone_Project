@@ -28,7 +28,7 @@ class RestaurantjoinTC: UITableViewCell {
         //menuPrice.text = "\(menuItem.price ?? 0)"
        
         // Load the image using SDWebImage
-        restImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "menu.png"))
+        restImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "image_1.png"))
           }
 
 }

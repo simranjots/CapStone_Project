@@ -30,7 +30,7 @@ class uMenuTBCell: UITableViewCell {
       //  menuPrice.text = "\(menuItem.price ?? 0)"
        
         // Load the image using SDWebImage
-        dishImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "menu.png"))
+        dishImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "image_1.png"))
 
 
 }
