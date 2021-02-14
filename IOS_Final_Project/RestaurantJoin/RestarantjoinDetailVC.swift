@@ -14,6 +14,7 @@ class RestarantjoinDetailVC: UIViewController{
     @IBOutlet weak var rstDetail_IV: UIImageView!
     @IBOutlet weak var rstDetTV: UITableView!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var payButton: UIButton!
     
     let maxHeaderHeight: CGFloat = 320
     
@@ -81,7 +82,7 @@ class RestarantjoinDetailVC: UIViewController{
                 payPalDriver.appSwitchDelegate = self // Optional
         
         // Specify the transaction amount here. "2.32" is used in this example.
-               let request = BTPayPalRequest(amount: "2.32")
+               let request = BTPayPalRequest(amount: "50.00")
                request.currencyCode = "CAD" // Optional; see BTPayPalRequest.h for more options
 
                payPalDriver.requestOneTimePayment(request) { (tokenizedPayPalAccount, error) in
@@ -99,10 +100,17 @@ class RestarantjoinDetailVC: UIViewController{
                        let shippingAddress = tokenizedPayPalAccount.shippingAddress
                     
                     self.view.makeToast("Payment made Successfully by \(firstName)")
+                    self.payButton.setTitle("Joined", for: .normal)
+                    self.payButton.backgroundColor = .systemGreen
+                    
                    } else if let error = error {
                        // Handle error here...
+                    self.payButton.setTitle("Join", for: .normal)
+                    self.payButton.backgroundColor = .systemRed
                    } else {
                        // Buyer canceled payment approval
+                    self.payButton.setTitle("Join", for: .normal)
+                    self.payButton.backgroundColor = .systemRed
                    }
                }
     }

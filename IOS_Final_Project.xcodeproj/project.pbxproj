@@ -33,6 +33,8 @@
 		9079B67B2436DB2200D3165D /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079B67A2436DB2100D3165D /* Car.swift */; };
 		A96147198B45638D1A609875 /* Pods_IOS_Final_Project_IOS_Final_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B43B4BDD9240A8F7A96617 /* Pods_IOS_Final_Project_IOS_Final_ProjectUITests.framework */; };
 		AE1D012025D88AAC00EA6E9D /* Braintree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1D011F25D88AAC00EA6E9D /* Braintree.framework */; };
+		AE1D015025D8C89500EA6E9D /* ManagerLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D014F25D8C89500EA6E9D /* ManagerLoginVC.swift */; };
+		AE1D018525D8DA0600EA6E9D /* ManagerMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D018425D8DA0600EA6E9D /* ManagerMC.swift */; };
 		AE78B94025D6546300B6BCE9 /* RestaurantJoinTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B93F25D6546300B6BCE9 /* RestaurantJoinTVC.swift */; };
 		AE78B94825D655F600B6BCE9 /* RestaurantjoinTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B94725D655F600B6BCE9 /* RestaurantjoinTC.swift */; };
 		AE78B94D25D6572500B6BCE9 /* RestaurantJoinMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B94C25D6572500B6BCE9 /* RestaurantJoinMC.swift */; };
@@ -120,6 +122,8 @@
 		AE1D011525D88A5100EA6E9D /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D011725D88A5100EA6E9D /* BraintreeDropIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BraintreeDropIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D011F25D88AAC00EA6E9D /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE1D014F25D8C89500EA6E9D /* ManagerLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginVC.swift; sourceTree = "<group>"; };
+		AE1D018425D8DA0600EA6E9D /* ManagerMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerMC.swift; sourceTree = "<group>"; };
 		AE78B93F25D6546300B6BCE9 /* RestaurantJoinTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantJoinTVC.swift; sourceTree = "<group>"; };
 		AE78B94725D655F600B6BCE9 /* RestaurantjoinTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantjoinTC.swift; sourceTree = "<group>"; };
 		AE78B94C25D6572500B6BCE9 /* RestaurantJoinMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantJoinMC.swift; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 		47325DD2242EE95200490C31 /* IOS_Final_Project */ = {
 			isa = PBXGroup;
 			children = (
+				AE1D018025D8CDEE00EA6E9D /* Unused */,
+				AE1D014E25D8C86800EA6E9D /* RestaurantLogin */,
 				AE78B93E25D6540D00B6BCE9 /* RestaurantJoin */,
 				AE95115C25D0883E00E70423 /* Menu */,
 				AE9510CC25CFA93500E70423 /* User Main Tab */,
@@ -289,6 +295,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE1D014E25D8C86800EA6E9D /* RestaurantLogin */ = {
+			isa = PBXGroup;
+			children = (
+				AE1D014F25D8C89500EA6E9D /* ManagerLoginVC.swift */,
+				AE1D018425D8DA0600EA6E9D /* ManagerMC.swift */,
+			);
+			path = RestaurantLogin;
+			sourceTree = "<group>";
+		};
+		AE1D018025D8CDEE00EA6E9D /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				4734E947242FDF8F007614C4 /* UserDataViewController.swift */,
+			);
+			path = Unused;
+			sourceTree = "<group>";
+		};
 		AE78B93E25D6540D00B6BCE9 /* RestaurantJoin */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,7 +326,6 @@
 		AE950FE525CE3EF100E70423 /* Login and Register */ = {
 			isa = PBXGroup;
 			children = (
-				4734E943242FD684007614C4 /* UserLoginViewController.swift */,
 				4734E945242FD735007614C4 /* KitchenLoginViewController.swift */,
 				AE95100925CE42AE00E70423 /* RegisterViewController.swift */,
 				AE95102B25CE466900E70423 /* FirebaseAuthManager.swift */,
@@ -324,7 +346,7 @@
 		AE9510CC25CFA93500E70423 /* User Main Tab */ = {
 			isa = PBXGroup;
 			children = (
-				4734E947242FDF8F007614C4 /* UserDataViewController.swift */,
+				4734E943242FD684007614C4 /* UserLoginViewController.swift */,
 				AE95112B25D067C200E70423 /* UserMenuVC.swift */,
 				AE95114E25D06B2E00E70423 /* uMenuTBCell.swift */,
 				AE7D1B6825D389A000C9529B /* UserMC.swift */,
@@ -616,6 +638,8 @@
 				4734E948242FDF8F007614C4 /* UserDataViewController.swift in Sources */,
 				AE95112C25D067C200E70423 /* UserMenuVC.swift in Sources */,
 				AE95100A25CE42AE00E70423 /* RegisterViewController.swift in Sources */,
+				AE1D015025D8C89500EA6E9D /* ManagerLoginVC.swift in Sources */,
+				AE1D018525D8DA0600EA6E9D /* ManagerMC.swift in Sources */,
 				47325DD8242EE95200490C31 /* ViewController.swift in Sources */,
 				47325DD4242EE95200490C31 /* AppDelegate.swift in Sources */,
 				2BA3E97D24F487EE003702D5 /* Menu.swift in Sources */,
