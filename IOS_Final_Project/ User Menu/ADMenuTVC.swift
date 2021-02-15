@@ -5,7 +5,7 @@ import Firebase
 import Toast_Swift
 
 
-class MenuTVC: UIViewController {
+class ADMenuTVC: UIViewController {
 
 
 
@@ -27,7 +27,7 @@ class MenuTVC: UIViewController {
 }
 
 
-extension MenuTVC: UITableViewDelegate, UITableViewDataSource {
+extension ADMenuTVC: UITableViewDelegate, UITableViewDataSource {
 
 func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -38,8 +38,8 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 }
 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "MenuListCell") as?
-        MenuTVCell else { return UITableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "amenuListCell") as?
+            ADMenuTVCell else { return UITableViewCell() }
 
     cell.configure(withProduct: menuSetup[indexPath.row])
 

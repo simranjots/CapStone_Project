@@ -5,7 +5,7 @@ import Firebase
 import FirebaseStorage
 import SDWebImage
 
-class MenuTVCell: UITableViewCell {
+class ADMenuTVCell: UITableViewCell {
 
     @IBOutlet weak var menuImg: UIImageView!
     @IBOutlet weak var menuName: UILabel!

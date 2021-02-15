@@ -1736,10 +1736,10 @@
             </objects>
             <point key="canvasLocation" x="2335" y="206"/>
         </scene>
-        <!--View Controller-->
+        <!--AdminMenuVC-->
         <scene sceneID="ez7-sZ-DfP">
             <objects>
-                <viewController id="X8y-hR-Y3I" sceneMemberID="viewController">
+                <viewController id="X8y-hR-Y3I" userLabel="AdminMenuVC" customClass="AdminMenuVC" customModule="IOS_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hAE-5b-8rJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1752,7 +1752,7 @@
                                     <constraint firstAttribute="width" constant="414" id="20K-G8-fWe"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="134" id="hHh-od-IPm" customClass="uMenuTBCell" customModule="IOS_Final_Project" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="adminCell" rowHeight="134" id="hHh-od-IPm" customClass="AdminMenuTBCell" customModule="IOS_Final_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hHh-od-IPm" id="29Q-Io-ED6">
@@ -1789,8 +1789,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dishImg" destination="dI7-9f-K4H" id="VKw-pW-Ihn"/>
-                                            <outlet property="dishLabel" destination="kzo-It-TV3" id="7cy-bh-8r2"/>
+                                            <outlet property="dishImg" destination="dI7-9f-K4H" id="gUG-Pj-zVh"/>
+                                            <outlet property="dishLabel" destination="kzo-It-TV3" id="S8C-Cz-WaA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1809,18 +1809,26 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qlK-s9-9Gv">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="compose" id="57s-6t-CBu"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="VVj-Lf-IkC"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="compose" id="57s-6t-CBu">
+                            <connections>
+                                <action selector="didTapSettting:" destination="X8y-hR-Y3I" id="mXn-qt-9g9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="VVj-Lf-IkC">
+                            <connections>
+                                <action selector="logoutbtn:" destination="X8y-hR-Y3I" id="kwZ-c2-O5j"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yuk-F3-X50" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4000" y="921"/>
         </scene>
-        <!--MenuTVC-->
+        <!--ADMenuTVC-->
         <scene sceneID="Jnz-8O-dSA">
             <objects>
-                <viewController id="QWZ-Je-ZMX" customClass="MenuTVC" customModule="IOS_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QWZ-Je-ZMX" userLabel="ADMenuTVC" customClass="ADMenuTVC" customModule="IOS_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ks7-bb-kl8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1830,7 +1838,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuListCell" rowHeight="116" id="nqZ-Ih-961" customClass="MenuTVCell" customModule="IOS_Final_Project" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="amenuListCell" rowHeight="116" id="nqZ-Ih-961" customClass="ADMenuTVCell" customModule="IOS_Final_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nqZ-Ih-961" id="0ZM-vd-nWM">
@@ -1904,15 +1912,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="menuImg" destination="FY3-GX-s8h" id="2f8-QQ-Wpx"/>
-                                            <outlet property="menuName" destination="YwI-uY-gvJ" id="yis-S1-ziz"/>
-                                            <outlet property="menuPrice" destination="RYq-h3-2Om" id="1cP-27-Mqc"/>
+                                            <outlet property="menuImg" destination="FY3-GX-s8h" id="83o-q0-zCj"/>
+                                            <outlet property="menuName" destination="YwI-uY-gvJ" id="CC2-WS-kz4"/>
+                                            <outlet property="menuPrice" destination="RYq-h3-2Om" id="YGa-eJ-0xz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="QWZ-Je-ZMX" id="atw-Q5-RiN"/>
-                                    <outlet property="delegate" destination="QWZ-Je-ZMX" id="CXe-OO-NCt"/>
+                                    <outlet property="dataSource" destination="QWZ-Je-ZMX" id="hax-ae-vES"/>
+                                    <outlet property="delegate" destination="QWZ-Je-ZMX" id="3O2-4J-DJK"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -1923,7 +1931,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0e-1N-iOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3223" y="1667"/>
+            <point key="canvasLocation" x="3221.739130434783" y="1666.7410714285713"/>
         </scene>
         <!--Today'Menu-->
         <scene sceneID="zok-sV-GZi">

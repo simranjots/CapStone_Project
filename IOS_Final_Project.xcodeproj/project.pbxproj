@@ -35,6 +35,9 @@
 		AE11748C25DB037F00347770 /* ADMenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11748B25DB037F00347770 /* ADMenuTVCell.swift */; };
 		AE11749125DB038700347770 /* ADMenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11749025DB038700347770 /* ADMenuTVC.swift */; };
 		AE11749625DB038E00347770 /* ADMenuMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11749525DB038E00347770 /* ADMenuMC.swift */; };
+		AE1175AD25DB226500347770 /* AdminMenuTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1175AC25DB226500347770 /* AdminMenuTBCell.swift */; };
+		AE1175B225DB226E00347770 /* AdminMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1175B125DB226E00347770 /* AdminMC.swift */; };
+		AE1175B725DB227600347770 /* AdminMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1175B625DB227600347770 /* AdminMenuVC.swift */; };
 		AE1D012025D88AAC00EA6E9D /* Braintree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1D011F25D88AAC00EA6E9D /* Braintree.framework */; };
 		AE1D015025D8C89500EA6E9D /* ManagerLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D014F25D8C89500EA6E9D /* ManagerLoginVC.swift */; };
 		AE1D018525D8DA0600EA6E9D /* ManagerMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D018425D8DA0600EA6E9D /* ManagerMC.swift */; };
@@ -126,6 +129,9 @@
 		AE11748B25DB037F00347770 /* ADMenuTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADMenuTVCell.swift; path = "IOS_Final_Project/ User Menu/ADMenuTVCell.swift"; sourceTree = SOURCE_ROOT; };
 		AE11749025DB038700347770 /* ADMenuTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADMenuTVC.swift; path = "IOS_Final_Project/ User Menu/ADMenuTVC.swift"; sourceTree = SOURCE_ROOT; };
 		AE11749525DB038E00347770 /* ADMenuMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADMenuMC.swift; path = "IOS_Final_Project/ User Menu/ADMenuMC.swift"; sourceTree = SOURCE_ROOT; };
+		AE1175AC25DB226500347770 /* AdminMenuTBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminMenuTBCell.swift; sourceTree = "<group>"; };
+		AE1175B125DB226E00347770 /* AdminMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminMC.swift; sourceTree = "<group>"; };
+		AE1175B625DB227600347770 /* AdminMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminMenuVC.swift; sourceTree = "<group>"; };
 		AE1D011525D88A5100EA6E9D /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D011725D88A5100EA6E9D /* BraintreeDropIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BraintreeDropIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D011F25D88AAC00EA6E9D /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +234,7 @@
 		47325DD2242EE95200490C31 /* IOS_Final_Project */ = {
 			isa = PBXGroup;
 			children = (
+				AE1175AB25DB222C00347770 /* AdminMenuTSp */,
 				AE11748725DB030B00347770 /* Admni Menu */,
 				AE1D018025D8CDEE00EA6E9D /* Unused */,
 				AE7720EB25DA412F004FFEED /* FirebaseData */,
@@ -312,6 +319,16 @@
 				AE11748B25DB037F00347770 /* ADMenuTVCell.swift */,
 			);
 			path = "Admni Menu";
+			sourceTree = "<group>";
+		};
+		AE1175AB25DB222C00347770 /* AdminMenuTSp */ = {
+			isa = PBXGroup;
+			children = (
+				AE1175B625DB227600347770 /* AdminMenuVC.swift */,
+				AE1175B125DB226E00347770 /* AdminMC.swift */,
+				AE1175AC25DB226500347770 /* AdminMenuTBCell.swift */,
+			);
+			path = AdminMenuTSp;
 			sourceTree = "<group>";
 		};
 		AE1D014E25D8C86800EA6E9D /* RestaurantLogin */ = {
@@ -656,6 +673,7 @@
 				2B315AB324F5759600290061 /* Order.swift in Sources */,
 				47325DDE242EE95200490C31 /* IOS_Final_Project.xcdatamodeld in Sources */,
 				9079B67B2436DB2200D3165D /* Car.swift in Sources */,
+				AE1175B725DB227600347770 /* AdminMenuVC.swift in Sources */,
 				AE7720ED25DA418F004FFEED /* FirebaseFD.swift in Sources */,
 				4734E946242FD735007614C4 /* KitchenLoginViewController.swift in Sources */,
 				AE95104B25CE82E000E70423 /* ResetPassViewController.swift in Sources */,
@@ -676,12 +694,14 @@
 				AE95102C25CE466900E70423 /* FirebaseAuthManager.swift in Sources */,
 				472139A52435775400D9AB47 /* AddnewItem.swift in Sources */,
 				AE95116B25D08ED200E70423 /* MenuTVCell.swift in Sources */,
+				AE1175B225DB226E00347770 /* AdminMC.swift in Sources */,
 				AEE5F43425D4E59C00C9E705 /* RestaurantRegisterVC.swift in Sources */,
 				478DFBD024355DAC000B90BB /* ManagerDetailViewController.swift in Sources */,
 				AE95114F25D06B2E00E70423 /* uMenuTBCell.swift in Sources */,
 				2BA3E98124F4DDC9003702D5 /* SwiftUIView.swift in Sources */,
 				AE11749625DB038E00347770 /* ADMenuMC.swift in Sources */,
 				AE11749125DB038700347770 /* ADMenuTVC.swift in Sources */,
+				AE1175AD25DB226500347770 /* AdminMenuTBCell.swift in Sources */,
 				2B315AB124F566F500290061 /* ContactUsViewController.swift in Sources */,
 				AE7D1B6925D389A000C9529B /* UserMC.swift in Sources */,
 				AE95105C25CE8FB500E70423 /* userData.swift in Sources */,

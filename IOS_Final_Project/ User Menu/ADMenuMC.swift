@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MenuMC {
+class ADMenuMC {
     var id : Int?
     var name : String?
     var imageLink : String?
