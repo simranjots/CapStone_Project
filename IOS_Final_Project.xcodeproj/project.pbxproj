@@ -35,6 +35,7 @@
 		AE1D012025D88AAC00EA6E9D /* Braintree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1D011F25D88AAC00EA6E9D /* Braintree.framework */; };
 		AE1D015025D8C89500EA6E9D /* ManagerLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D014F25D8C89500EA6E9D /* ManagerLoginVC.swift */; };
 		AE1D018525D8DA0600EA6E9D /* ManagerMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D018425D8DA0600EA6E9D /* ManagerMC.swift */; };
+		AE7720ED25DA418F004FFEED /* FirebaseFD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7720EC25DA418F004FFEED /* FirebaseFD.swift */; };
 		AE78B94025D6546300B6BCE9 /* RestaurantJoinTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B93F25D6546300B6BCE9 /* RestaurantJoinTVC.swift */; };
 		AE78B94825D655F600B6BCE9 /* RestaurantjoinTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B94725D655F600B6BCE9 /* RestaurantjoinTC.swift */; };
 		AE78B94D25D6572500B6BCE9 /* RestaurantJoinMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B94C25D6572500B6BCE9 /* RestaurantJoinMC.swift */; };
@@ -124,6 +125,7 @@
 		AE1D011F25D88AAC00EA6E9D /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D014F25D8C89500EA6E9D /* ManagerLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginVC.swift; sourceTree = "<group>"; };
 		AE1D018425D8DA0600EA6E9D /* ManagerMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerMC.swift; sourceTree = "<group>"; };
+		AE7720EC25DA418F004FFEED /* FirebaseFD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFD.swift; sourceTree = "<group>"; };
 		AE78B93F25D6546300B6BCE9 /* RestaurantJoinTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantJoinTVC.swift; sourceTree = "<group>"; };
 		AE78B94725D655F600B6BCE9 /* RestaurantjoinTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantjoinTC.swift; sourceTree = "<group>"; };
 		AE78B94C25D6572500B6BCE9 /* RestaurantJoinMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantJoinMC.swift; sourceTree = "<group>"; };
@@ -221,11 +223,12 @@
 			isa = PBXGroup;
 			children = (
 				AE1D018025D8CDEE00EA6E9D /* Unused */,
+				AE7720EB25DA412F004FFEED /* FirebaseData */,
 				AE1D014E25D8C86800EA6E9D /* RestaurantLogin */,
 				AE78B93E25D6540D00B6BCE9 /* RestaurantJoin */,
-				AE95115C25D0883E00E70423 /* Menu */,
-				AE9510CC25CFA93500E70423 /* User Main Tab */,
-				AE95104F25CE8CEE00E70423 /* User Data Model */,
+				AE95115C25D0883E00E70423 /*  User Menu */,
+				AE9510CC25CFA93500E70423 /* User MenuTSp */,
+				AE95104F25CE8CEE00E70423 /* Data Model */,
 				AE950FE525CE3EF100E70423 /* Login and Register */,
 				47325DD3242EE95200490C31 /* AppDelegate.swift */,
 				47325DD7242EE95200490C31 /* ViewController.swift */,
@@ -307,9 +310,19 @@
 		AE1D018025D8CDEE00EA6E9D /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				4734E945242FD735007614C4 /* KitchenLoginViewController.swift */,
 				4734E947242FDF8F007614C4 /* UserDataViewController.swift */,
 			);
 			path = Unused;
+			sourceTree = "<group>";
+		};
+		AE7720EB25DA412F004FFEED /* FirebaseData */ = {
+			isa = PBXGroup;
+			children = (
+				AE95102B25CE466900E70423 /* FirebaseAuthManager.swift */,
+				AE7720EC25DA418F004FFEED /* FirebaseFD.swift */,
+			);
+			path = FirebaseData;
 			sourceTree = "<group>";
 		};
 		AE78B93E25D6540D00B6BCE9 /* RestaurantJoin */ = {
@@ -326,42 +339,40 @@
 		AE950FE525CE3EF100E70423 /* Login and Register */ = {
 			isa = PBXGroup;
 			children = (
-				4734E945242FD735007614C4 /* KitchenLoginViewController.swift */,
+				4734E943242FD684007614C4 /* UserLoginViewController.swift */,
 				AE95100925CE42AE00E70423 /* RegisterViewController.swift */,
-				AE95102B25CE466900E70423 /* FirebaseAuthManager.swift */,
 				AE95104A25CE82E000E70423 /* ResetPassViewController.swift */,
 				AEE5F43325D4E59C00C9E705 /* RestaurantRegisterVC.swift */,
 			);
 			path = "Login and Register";
 			sourceTree = "<group>";
 		};
-		AE95104F25CE8CEE00E70423 /* User Data Model */ = {
+		AE95104F25CE8CEE00E70423 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
 				AE95105B25CE8FB500E70423 /* userData.swift */,
 			);
-			path = "User Data Model";
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
-		AE9510CC25CFA93500E70423 /* User Main Tab */ = {
+		AE9510CC25CFA93500E70423 /* User MenuTSp */ = {
 			isa = PBXGroup;
 			children = (
-				4734E943242FD684007614C4 /* UserLoginViewController.swift */,
 				AE95112B25D067C200E70423 /* UserMenuVC.swift */,
 				AE95114E25D06B2E00E70423 /* uMenuTBCell.swift */,
 				AE7D1B6825D389A000C9529B /* UserMC.swift */,
 			);
-			path = "User Main Tab";
+			path = "User MenuTSp";
 			sourceTree = "<group>";
 		};
-		AE95115C25D0883E00E70423 /* Menu */ = {
+		AE95115C25D0883E00E70423 /*  User Menu */ = {
 			isa = PBXGroup;
 			children = (
 				AE95115D25D0886200E70423 /* MenuMC.swift */,
 				AE95116525D08E8600E70423 /* MenuTVC.swift */,
 				AE95116A25D08ED200E70423 /* MenuTVCell.swift */,
 			);
-			path = Menu;
+			path = " User Menu";
 			sourceTree = "<group>";
 		};
 		CCE53FAC84150B01C6AE868B /* Pods */ = {
@@ -628,6 +639,7 @@
 				2B315AB324F5759600290061 /* Order.swift in Sources */,
 				47325DDE242EE95200490C31 /* IOS_Final_Project.xcdatamodeld in Sources */,
 				9079B67B2436DB2200D3165D /* Car.swift in Sources */,
+				AE7720ED25DA418F004FFEED /* FirebaseFD.swift in Sources */,
 				4734E946242FD735007614C4 /* KitchenLoginViewController.swift in Sources */,
 				AE95104B25CE82E000E70423 /* ResetPassViewController.swift in Sources */,
 				AE95115E25D0886200E70423 /* MenuMC.swift in Sources */,

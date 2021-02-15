@@ -74,6 +74,8 @@ class RestarantjoinDetailVC: UIViewController{
         self.present(vc, animated: true, completion: nil)
     }
     
+    
+    
     @IBAction func PaymentButton(_ sender: Any) {
         // Process Payment once the pay button is clicked.
         braintreeClient = BTAPIClient(authorization: "sandbox_bnh653wd_rm9zxv57v66g8nzg")!
@@ -89,21 +91,21 @@ class RestarantjoinDetailVC: UIViewController{
                    if let tokenizedPayPalAccount = tokenizedPayPalAccount {
                        print("Got a nonce: \(tokenizedPayPalAccount.nonce)")
 
-                       // Access additional information
-                       let email = tokenizedPayPalAccount.email
-                       let firstName = tokenizedPayPalAccount.firstName
-                       let lastName = tokenizedPayPalAccount.lastName
-                       let phone = tokenizedPayPalAccount.phone
-
-                       // See BTPostalAddress.h for details
-                       let billingAddress = tokenizedPayPalAccount.billingAddress
-                       let shippingAddress = tokenizedPayPalAccount.shippingAddress
+//                       // Access additional information
+//                       let email = tokenizedPayPalAccount.email
+                         let firstName = tokenizedPayPalAccount.firstName
+//                       let lastName = tokenizedPayPalAccount.lastName
+//                       let phone = tokenizedPayPalAccount.phone
+//
+//                       // See BTPostalAddress.h for details
+//                       let billingAddress = tokenizedPayPalAccount.billingAddress
+//                       let shippingAddress = tokenizedPayPalAccount.shippingAddress
                     
-                    self.view.makeToast("Payment made Successfully by \(firstName)")
+                    self.view.makeToast("Payment made Successfully by \(String(describing: firstName))")
                     self.payButton.setTitle("Joined", for: .normal)
                     self.payButton.backgroundColor = .systemGreen
                     
-                   } else if let error = error {
+                   } else if error != nil {
                        // Handle error here...
                     self.payButton.setTitle("Join", for: .normal)
                     self.payButton.backgroundColor = .systemRed

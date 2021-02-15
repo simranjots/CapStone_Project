@@ -19,8 +19,9 @@ class RestaurantJoinTVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let fetchRestData = FirebaseFD()
         // Do any additional setup after loading the view.
-        fetchRestaurants { (restaurant) in
+        fetchRestData.fetchRestaurants { (restaurant) in
                     self.restJoin = restaurant
                     self.restJoinTv.reloadData()
      
@@ -37,17 +38,7 @@ class RestaurantJoinTVC: UIViewController {
     
     
 }
-    func fetchRestaurants(_ completion: @escaping ([RestaurentJoinMC]) -> Void) {
-        let ref = Firestore.firestore().collection("Restaurants")
-        ref.addSnapshotListener { (snapshot, error) in
-        guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
-            return
-            
-        }
-
-        completion(snapshot.documents.compactMap( {RestaurentJoinMC(dictionary: $0.data())} ))
-    }
-    }
+   
 
 
 extension RestaurantJoinTVC: UITableViewDelegate, UITableViewDataSource {

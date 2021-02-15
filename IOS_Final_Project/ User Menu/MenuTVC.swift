@@ -14,9 +14,9 @@ class MenuTVC: UIViewController {
     @IBOutlet weak var menuTB: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let dataFetch = FirebaseFD()
         // Do any additional setup after loading the view.
-        fetchProducts { (products) in
+        dataFetch.fetchProducts { (products) in
                     self.menuSetup = products
                     self.menuTB.reloadData()
                 }
@@ -25,18 +25,6 @@ class MenuTVC: UIViewController {
   
 
 }
-func fetchProducts(_ completion: @escaping ([MenuMC]) -> Void) {
-    let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana")
-     ref.addSnapshotListener { (snapshot, error) in
-    guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
-        return
-        
-    }
-
-    completion(snapshot.documents.compactMap( {MenuMC(dictionary: $0.data())} ))
-}
-}
-
 
 
 extension MenuTVC: UITableViewDelegate, UITableViewDataSource {

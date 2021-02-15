@@ -33,8 +33,9 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
 
+        let fetchTodaySp = FirebaseFD()
         // Do any additional setup after loading the view.
-        FetchTodays { (products) in
+        fetchTodaySp.FetchTodays { (products) in
                     self.menuSetup = products
                     self.UmenuTBV.reloadData()
                 }
@@ -129,18 +130,7 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
 
 
-func FetchTodays(_ completion: @escaping ([UserMC]) -> Void) {
-    let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana")
-    ref.addSnapshotListener { (snapshot, error) in
-    guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
-        return
-        
-    }
 
-    completion(snapshot.documents.compactMap( {UserMC(dictionary: $0.data())} ))
-}
-    
-}
 
 
 
