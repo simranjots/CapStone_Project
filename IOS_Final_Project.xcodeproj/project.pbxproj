@@ -32,6 +32,9 @@
 		478DFBD024355DAC000B90BB /* ManagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DFBCF24355DAC000B90BB /* ManagerDetailViewController.swift */; };
 		9079B67B2436DB2200D3165D /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079B67A2436DB2100D3165D /* Car.swift */; };
 		A96147198B45638D1A609875 /* Pods_IOS_Final_Project_IOS_Final_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B43B4BDD9240A8F7A96617 /* Pods_IOS_Final_Project_IOS_Final_ProjectUITests.framework */; };
+		AE11748C25DB037F00347770 /* ADMenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11748B25DB037F00347770 /* ADMenuTVCell.swift */; };
+		AE11749125DB038700347770 /* ADMenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11749025DB038700347770 /* ADMenuTVC.swift */; };
+		AE11749625DB038E00347770 /* ADMenuMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11749525DB038E00347770 /* ADMenuMC.swift */; };
 		AE1D012025D88AAC00EA6E9D /* Braintree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1D011F25D88AAC00EA6E9D /* Braintree.framework */; };
 		AE1D015025D8C89500EA6E9D /* ManagerLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D014F25D8C89500EA6E9D /* ManagerLoginVC.swift */; };
 		AE1D018525D8DA0600EA6E9D /* ManagerMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D018425D8DA0600EA6E9D /* ManagerMC.swift */; };
@@ -120,6 +123,9 @@
 		7F92A7CCE4945CA935AAEF54 /* Pods-IOS_Final_Project-IOS_Final_ProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Final_Project-IOS_Final_ProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-IOS_Final_Project-IOS_Final_ProjectUITests/Pods-IOS_Final_Project-IOS_Final_ProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9079B67A2436DB2100D3165D /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		90DEA15E938F0C6696237220 /* Pods-IOS_Final_ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Final_ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-IOS_Final_ProjectTests/Pods-IOS_Final_ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE11748B25DB037F00347770 /* ADMenuTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADMenuTVCell.swift; path = "IOS_Final_Project/ User Menu/ADMenuTVCell.swift"; sourceTree = SOURCE_ROOT; };
+		AE11749025DB038700347770 /* ADMenuTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADMenuTVC.swift; path = "IOS_Final_Project/ User Menu/ADMenuTVC.swift"; sourceTree = SOURCE_ROOT; };
+		AE11749525DB038E00347770 /* ADMenuMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADMenuMC.swift; path = "IOS_Final_Project/ User Menu/ADMenuMC.swift"; sourceTree = SOURCE_ROOT; };
 		AE1D011525D88A5100EA6E9D /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D011725D88A5100EA6E9D /* BraintreeDropIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BraintreeDropIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1D011F25D88AAC00EA6E9D /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +228,7 @@
 		47325DD2242EE95200490C31 /* IOS_Final_Project */ = {
 			isa = PBXGroup;
 			children = (
+				AE11748725DB030B00347770 /* Admni Menu */,
 				AE1D018025D8CDEE00EA6E9D /* Unused */,
 				AE7720EB25DA412F004FFEED /* FirebaseData */,
 				AE1D014E25D8C86800EA6E9D /* RestaurantLogin */,
@@ -234,7 +241,6 @@
 				47325DD7242EE95200490C31 /* ViewController.swift */,
 				47325DD9242EE95200490C31 /* Main.storyboard */,
 				472139A42435775400D9AB47 /* AddnewItem.swift */,
-				4734E94B242FE0B1007614C4 /* ManagerDataViewController.swift */,
 				4734E949242FE01F007614C4 /* UserDetailwindowViewController.swift */,
 				478DFBCF24355DAC000B90BB /* ManagerDetailViewController.swift */,
 				47325DDF242EE95300490C31 /* Assets.xcassets */,
@@ -298,6 +304,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE11748725DB030B00347770 /* Admni Menu */ = {
+			isa = PBXGroup;
+			children = (
+				AE11749525DB038E00347770 /* ADMenuMC.swift */,
+				AE11749025DB038700347770 /* ADMenuTVC.swift */,
+				AE11748B25DB037F00347770 /* ADMenuTVCell.swift */,
+			);
+			path = "Admni Menu";
+			sourceTree = "<group>";
+		};
 		AE1D014E25D8C86800EA6E9D /* RestaurantLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +326,7 @@
 		AE1D018025D8CDEE00EA6E9D /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				4734E94B242FE0B1007614C4 /* ManagerDataViewController.swift */,
 				4734E945242FD735007614C4 /* KitchenLoginViewController.swift */,
 				4734E947242FDF8F007614C4 /* UserDataViewController.swift */,
 			);
@@ -649,6 +666,7 @@
 				AE95116625D08E8600E70423 /* MenuTVC.swift in Sources */,
 				4734E948242FDF8F007614C4 /* UserDataViewController.swift in Sources */,
 				AE95112C25D067C200E70423 /* UserMenuVC.swift in Sources */,
+				AE11748C25DB037F00347770 /* ADMenuTVCell.swift in Sources */,
 				AE95100A25CE42AE00E70423 /* RegisterViewController.swift in Sources */,
 				AE1D015025D8C89500EA6E9D /* ManagerLoginVC.swift in Sources */,
 				AE1D018525D8DA0600EA6E9D /* ManagerMC.swift in Sources */,
@@ -662,6 +680,8 @@
 				478DFBD024355DAC000B90BB /* ManagerDetailViewController.swift in Sources */,
 				AE95114F25D06B2E00E70423 /* uMenuTBCell.swift in Sources */,
 				2BA3E98124F4DDC9003702D5 /* SwiftUIView.swift in Sources */,
+				AE11749625DB038E00347770 /* ADMenuMC.swift in Sources */,
+				AE11749125DB038700347770 /* ADMenuTVC.swift in Sources */,
 				2B315AB124F566F500290061 /* ContactUsViewController.swift in Sources */,
 				AE7D1B6925D389A000C9529B /* UserMC.swift in Sources */,
 				AE95105C25CE8FB500E70423 /* userData.swift in Sources */,
