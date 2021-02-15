@@ -60,7 +60,7 @@ class ManagerLoginVC: UIViewController {
                                 if  (e == username.text && p == password.text ){
                                     self.view.makeToast("Successful")
                                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "managerDetails") as UIViewController
+                                    let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "adMenu") as UIViewController
                                     self.present(vc, animated: true, completion: nil)
                                    
                                 }
