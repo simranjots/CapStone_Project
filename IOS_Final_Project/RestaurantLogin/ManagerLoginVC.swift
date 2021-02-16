@@ -1,10 +1,3 @@
-//
-//  ManagerLoginVC.swift
-//  IOS_Final_Project
-//
-//  Created by Kuldeep on 2021-02-13.
-//  Copyright © 2021 user168953. All rights reserved.
-//
 
 import UIKit
 import CoreData

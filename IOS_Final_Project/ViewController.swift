@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  IOS_Final_Project
-//
-//  Created by user168953 on 3/27/20.
-//  Copyright © 2020 user168953. All rights reserved.
-//
 
 import UIKit
 import CoreData
@@ -51,33 +44,7 @@ class ViewController: UIViewController {
         
     }
     
-//    func createData() {
-//
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//
-//        let userEntity = NSEntityDescription.entity(forEntityName: "User", in: managedContext)!
-//
-//        for i in 1...5 {
-//
-//            let user = NSManagedObject(entity: userEntity, insertInto: managedContext)
-//            user.setValue("Ankur\(i)", forKeyPath: "username")
-//            user.setValue("ankur\(i)@test.com", forKey: "email")
-//            user.setValue("ankur\(i)", forKey: "password")
-//        }
-//
-//        do {
-//            try managedContext.save()
-//
-//        } catch let error as NSError {
-//            print("Could not save. \(error), \(error.userInfo)")
-//        }
-//
-//
-//    }
-//
-    
+
     
     
     

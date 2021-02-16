@@ -11,7 +11,7 @@ import CoreData
 import SideMenu
 import Firebase
 
-class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
+class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
     var menuSetup = [MenuMC]()
 
@@ -26,7 +26,7 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         self.uContext = app_delegate.persistentContainer.viewContext
         self.navigationItem.setHidesBackButton(true, animated: false)
         
-        menu = SideMenuNavigationController(rootViewController: SettingListController())
+        menu = SideMenuNavigationController(rootViewController: SettingListControllers())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         
@@ -39,20 +39,13 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
                     self.menuSetup = products
                     self.UmenuTBV.reloadData()
                 }
+        
+    
     }
     
     
-    @IBAction func logoutbtn(_ sender: Any) {
-        do {
-          try Auth.auth().signOut()
-        } catch {
-          print("Sign out error")
-        }
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "restJoinPage") as UIViewController
-        self.present(vc, animated: true, completion: nil)
+    
 
-    }
     @IBAction func didTapSettting(_ sender: Any) {
         present(menu!, animated: true)
 
@@ -67,8 +60,8 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         return menuSetup.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as?
-                uMenuTBCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "adminCell") as?
+                AdminMenuTBCell else { return UITableViewCell() }
 
         cell.configure(withProduct: menuSetup[indexPath.row])
 
@@ -99,7 +92,7 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     
     
-    class SettingListController: UITableViewController{
+    class SettingListControllers: UITableViewController{
         
         var items = ["Edit Information", "Order History", "Contact Us"]
         let lightColor = UIColor.white

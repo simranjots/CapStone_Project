@@ -1,13 +1,8 @@
-//
-//  FirebaseFD.swift
-//  IOS_Final_Project
-//
-//  Created by Kuldeep on 2021-02-15.
-//  Copyright © 2021 user168953. All rights reserved.
-//
+
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 class FirebaseFD {
     
@@ -25,7 +20,7 @@ class FirebaseFD {
     
     
     
-    func FetchTodays(_ completion: @escaping ([UserMC]) -> Void) {
+    func FetchTodays(_ completion: @escaping ([MenuMC]) -> Void) {
         let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana")
         ref.addSnapshotListener { (snapshot, error) in
         guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
@@ -33,7 +28,7 @@ class FirebaseFD {
             
         }
 
-        completion(snapshot.documents.compactMap( {UserMC(dictionary: $0.data())} ))
+        completion(snapshot.documents.compactMap( {MenuMC(dictionary: $0.data())} ))
     }
     }
     

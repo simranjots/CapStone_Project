@@ -8,7 +8,7 @@
 
 import UIKit
 
-class uMenuTBCell: UITableViewCell {
+class AdminMenuTBCell: UITableViewCell {
 
     @IBOutlet weak var dishImg: UIImageView!
     @IBOutlet weak var dishLabel: UILabel!
