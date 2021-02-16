@@ -13,8 +13,9 @@ import Firebase
 
 class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
-    var menuSetup = [MenuMC]()
-
+    var picachu = ADMenuTVC()
+   
+    
     @IBOutlet weak var UmenuTBV: UITableView!
     var uContext: NSManagedObjectContext?
     var uSelectedCar: MenuMC?
@@ -22,6 +23,7 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let app_delegate = UIApplication.shared.delegate as! AppDelegate
         self.uContext = app_delegate.persistentContainer.viewContext
         self.navigationItem.setHidesBackButton(true, animated: false)
@@ -33,17 +35,17 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
 
-        let fetchTodaySp = FirebaseFD()
-        // Do any additional setup after loading the view.
-        fetchTodaySp.FetchTodays { (products) in
-                    self.menuSetup = products
-                    self.UmenuTBV.reloadData()
-                }
         
-    
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let fetchTodaySp = FirebaseFD()
+            fetchTodaySp.FetchTodays { (products) in
+                self.picachu.menuSetup = products
+                        self.UmenuTBV.reloadData()
+            }
+    }
     
 
     @IBAction func didTapSettting(_ sender: Any) {
@@ -53,18 +55,23 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if self.picachu.menuSetup.count == 0 {
+            return 0
+        }
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuSetup.count
+       
+        return self.picachu.menuSetup.count
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "adminCell") as?
-                AdminMenuTBCell else { return UITableViewCell() }
-
-        cell.configure(withProduct: menuSetup[indexPath.row])
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "adminCell", for: indexPath) as! AdminMenuTBCell
+       
+      
+            cell.configure(withProduct: self.picachu.menuSetup[indexPath.row])
+        
         return cell
     }
  
@@ -87,6 +94,7 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 //                }
 //            }
         }
+
 
     
     

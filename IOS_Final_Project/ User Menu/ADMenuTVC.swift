@@ -16,6 +16,7 @@ class ADMenuTVC: UIViewController {
     @IBOutlet weak var menuTB: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let dataFetch = FirebaseFD()
         // Do any additional setup after loading the view.
         dataFetch.fetchProducts { (products) in
@@ -23,7 +24,6 @@ class ADMenuTVC: UIViewController {
                     self.menuTB.reloadData()
                 }
     }
-    App
 
   
     @IBAction func addData(_ sender: Any) {
@@ -55,6 +55,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         let db = Firestore.firestore()
         id = menuSetup[self.rowSelected].id!
         if editingStyle == .delete {
@@ -62,6 +63,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
             menuTB.deleteRows(at: [indexPath], with: .fade)
             db.collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898")
                 .collection("Khanna Khazana").document(id).delete()
+            
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
