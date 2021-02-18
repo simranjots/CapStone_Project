@@ -78,7 +78,8 @@ class AddEditDelete: UIViewController {
                                          "name": self.name,
                                          "imageLink": "",
                                          "description": self.detail,
-                                         "price": self.price
+                                         "price": self.price,
+                                         "fav": false
                             ] as [String : Any]
                             db.collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898")
                                 .collection("Khanna Khazana").document(id).setData(datas)

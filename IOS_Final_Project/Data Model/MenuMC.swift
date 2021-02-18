@@ -14,13 +14,15 @@ class MenuMC {
     var imageLink : String?
     var description : String?
     var price : Float?
+    var fav : Bool?
     
-    init(id : String?, name : String? , imageLink : String?, description : String?, price : Float?){
+    init(id : String?, name : String? , imageLink : String?, description : String?, price : Float?, fav : Bool?){
         self.id = id
         self.name = name
         self.imageLink = imageLink
         self.description = description
         self.price = price
+        self.fav = fav
     }
     
     convenience init(dictionary: [String : Any]) {
@@ -29,9 +31,10 @@ class MenuMC {
           let imageLink = dictionary["imageLink"] as? String ?? ""
           let description = dictionary["description"] as? String ?? ""
           let price =  dictionary["price"] as? Float ?? 0.0
+          let fav  = dictionary["fav"] as? Bool ?? false
         
 
-          self.init(id: id, name: name, imageLink: imageLink, description: description, price: price)
+        self.init(id: id, name: name, imageLink: imageLink, description: description, price: price, fav : fav)
       }
 
 }

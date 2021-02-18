@@ -10,6 +10,8 @@ class ADMenuTVCell: UITableViewCell {
     @IBOutlet weak var menuImg: UIImageView!
     @IBOutlet weak var menuName: UILabel!
     @IBOutlet weak var menuPrice: UILabel!
+    @IBOutlet weak var favImg: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +25,7 @@ class ADMenuTVCell: UITableViewCell {
     func configure(withProduct menuItem: MenuMC) {
            
            menuName.text = menuItem.name
-        menuPrice.text = "\(menuItem.price ?? 0)"
+        menuPrice.text = "\(menuItem.price ?? 0) $"
        
         // Load the image using SDWebImage
         menuImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "image_1.png"))
@@ -42,4 +44,6 @@ class ADMenuTVCell: UITableViewCell {
 //               completion(image)
 //           }
       }
+
+
 }
