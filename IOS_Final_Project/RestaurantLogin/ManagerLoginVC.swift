@@ -25,6 +25,7 @@ class ManagerLoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+   
     }
     
     
@@ -51,6 +52,8 @@ class ManagerLoginVC: UIViewController {
                                 print("hell \(e)")
                              
                                 if  (e == username.text && p == password.text ){
+                                    UserDefaults.standard.set(true, forKey: "adminsignedin")
+                                    UserDefaults.standard.synchronize()
                                     self.view.makeToast("Successful")
                                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                                     let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "adMenu") as UIViewController

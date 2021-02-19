@@ -44,6 +44,8 @@
 		AE78B94025D6546300B6BCE9 /* RestaurantJoinTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B93F25D6546300B6BCE9 /* RestaurantJoinTVC.swift */; };
 		AE78B94825D655F600B6BCE9 /* RestaurantjoinTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B94725D655F600B6BCE9 /* RestaurantjoinTC.swift */; };
 		AE78B94D25D6572500B6BCE9 /* RestaurantJoinMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE78B94C25D6572500B6BCE9 /* RestaurantJoinMC.swift */; };
+		AE80A6D025DFAF1600AE7B74 /* settingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE80A6CF25DFAF1600AE7B74 /* settingListVC.swift */; };
+		AE80A6D525DFAF5F00AE7B74 /* settingListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE80A6D425DFAF5F00AE7B74 /* settingListTVC.swift */; };
 		AE95100A25CE42AE00E70423 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE95100925CE42AE00E70423 /* RegisterViewController.swift */; };
 		AE95102C25CE466900E70423 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE95102B25CE466900E70423 /* FirebaseAuthManager.swift */; };
 		AE95104325CE505900E70423 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE95104225CE505900E70423 /* GoogleService-Info.plist */; };
@@ -137,6 +139,8 @@
 		AE78B93F25D6546300B6BCE9 /* RestaurantJoinTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantJoinTVC.swift; sourceTree = "<group>"; };
 		AE78B94725D655F600B6BCE9 /* RestaurantjoinTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantjoinTC.swift; sourceTree = "<group>"; };
 		AE78B94C25D6572500B6BCE9 /* RestaurantJoinMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantJoinMC.swift; sourceTree = "<group>"; };
+		AE80A6CF25DFAF1600AE7B74 /* settingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingListVC.swift; sourceTree = "<group>"; };
+		AE80A6D425DFAF5F00AE7B74 /* settingListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingListTVC.swift; sourceTree = "<group>"; };
 		AE95100925CE42AE00E70423 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		AE95102B25CE466900E70423 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 		AE95103B25CE4FFD00E70423 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -395,6 +399,8 @@
 			children = (
 				AE95112B25D067C200E70423 /* UserMenuVC.swift */,
 				AE95114E25D06B2E00E70423 /* uMenuTBCell.swift */,
+				AE80A6CF25DFAF1600AE7B74 /* settingListVC.swift */,
+				AE80A6D425DFAF5F00AE7B74 /* settingListTVC.swift */,
 			);
 			path = "User MenuTSp";
 			sourceTree = "<group>";
@@ -663,6 +669,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE78B94D25D6572500B6BCE9 /* RestaurantJoinMC.swift in Sources */,
+				AE80A6D025DFAF1600AE7B74 /* settingListVC.swift in Sources */,
 				4734E94A242FE01F007614C4 /* UserDetailwindowViewController.swift in Sources */,
 				AE78B94825D655F600B6BCE9 /* RestaurantjoinTC.swift in Sources */,
 				2B315AAD24F5668E00290061 /* EditInformationViewController.swift in Sources */,
@@ -693,6 +700,7 @@
 				472139A52435775400D9AB47 /* AddEditDelete.swift in Sources */,
 				AE95116B25D08ED200E70423 /* MenuTVCell.swift in Sources */,
 				AEE5F43425D4E59C00C9E705 /* RestaurantRegisterVC.swift in Sources */,
+				AE80A6D525DFAF5F00AE7B74 /* settingListTVC.swift in Sources */,
 				478DFBD024355DAC000B90BB /* ManagerDetailViewController.swift in Sources */,
 				AE95114F25D06B2E00E70423 /* uMenuTBCell.swift in Sources */,
 				2BA3E98124F4DDC9003702D5 /* SwiftUIView.swift in Sources */,

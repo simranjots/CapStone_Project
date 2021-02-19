@@ -12,7 +12,7 @@ import FirebaseAuth
 import UIKit
 
 class FirebaseAuthManager {
-    
+
    
     
     func createUser(email: String, password: String, completionBlock: @escaping (_ success: Bool,String) -> Void) {
@@ -20,9 +20,6 @@ class FirebaseAuthManager {
         Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
             if let user = authResult?.user {
                 Error = "User was sucessfully created."
-                print(user)
-                let newUserInfo = Auth.auth().currentUser
-                    let emai = newUserInfo?.email
                 completionBlock(true,Error!)
             } else {
                 if let error = error as NSError? {
@@ -75,9 +72,10 @@ class FirebaseAuthManager {
                 }
                 completionBlock(false,Error ?? "Invalid email address" )
             } else {
+                let userEmail = Auth.auth().currentUser?.email
+                UserDefaults.standard.setValue(userEmail, forKey: "email")
                 Error = "User Sign In sucessfully ."
-                let userInfo = Auth.auth().currentUser
-                    let ema = userInfo?.email
+               
                 completionBlock(true,Error!)
             }
         }

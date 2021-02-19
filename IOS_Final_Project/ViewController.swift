@@ -10,8 +10,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navigationController?.setNavigationBarHidden(true, animated: false)
-        
         titleLabel.text = ""
         var charIndex = 0.0
         let titletext = "Home Food"
@@ -33,14 +31,30 @@ class ViewController: UIViewController {
 
     @IBAction func userButtonPressed(_ sender: UIButton) {
         
-       
+        if UserDefaults.standard.bool(forKey: "usersignedin") {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "menu") as UIViewController
+            self.present(vc, animated: true, completion: nil)
+        }else {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "uLogin") as UIViewController
+            self.present(vc, animated: true, completion: nil)
+        }
         
     }
     
     
     @IBAction func managerButtonPressed(_ sender: UIButton) {
         
-        
+        if UserDefaults.standard.bool(forKey: "adminsignedin") {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "adMenu") as UIViewController
+            self.present(vc, animated: true, completion: nil)
+        }else {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "alogin") as UIViewController
+            self.present(vc, animated: true, completion: nil)
+        }
         
     }
     

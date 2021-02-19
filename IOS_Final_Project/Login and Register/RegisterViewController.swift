@@ -68,6 +68,7 @@ class RegisterViewController: UIViewController {
                         let datas = ["Id":UUID().uuidString,
                             "name": n,
                             "email":email,
+                            "imageLink":"",
                             "password":password,
                             "phone":p,
                             "address":a,

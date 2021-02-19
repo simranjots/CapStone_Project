@@ -11,7 +11,9 @@ class UserLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
     }
+    
     
     
     @IBAction func loginBtnPressed(_ sender: Any) {
@@ -27,6 +29,8 @@ class UserLoginViewController: UIViewController {
                 guard let `self` = self else { return }
                 
                 if (success) {
+                    UserDefaults.standard.set(true, forKey: "usersignedin")
+                    UserDefaults.standard.synchronize()
                     self.view.makeToast(message)
                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "menu") as UIViewController

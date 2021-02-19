@@ -15,11 +15,12 @@ import Braintree
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+   
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UITabBar.appearance().barTintColor = .systemGray2
         UITabBar.appearance().tintColor = .systemBackground
-
+       
         // Override point for customization after application launch.
         FirebaseApp.configure()
         

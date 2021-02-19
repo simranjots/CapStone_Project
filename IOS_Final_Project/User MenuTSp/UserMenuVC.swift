@@ -10,23 +10,19 @@ import UIKit
 import CoreData
 import SideMenu
 import Firebase
-
 class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
     var menuSetup = [MenuMC]()
 
     @IBOutlet weak var UmenuTBV: UITableView!
-    var uContext: NSManagedObjectContext?
-    var uSelectedCar: MenuMC?
+  
     var menu: SideMenuNavigationController?
-   
+    var userInfo : User?
     override func viewDidLoad() {
+      
         super.viewDidLoad()
-        let app_delegate = UIApplication.shared.delegate as! AppDelegate
-        self.uContext = app_delegate.persistentContainer.viewContext
         self.navigationItem.setHidesBackButton(true, animated: false)
-        
-        menu = SideMenuNavigationController(rootViewController: SettingListController())
+        menu = SideMenuNavigationController(rootViewController: settingListVC())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         
@@ -43,17 +39,11 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     
     @IBAction func logoutbtn(_ sender: Any) {
-        do {
-          try Auth.auth().signOut()
-        } catch {
-          print("Sign out error")
-        }
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "restJoinPage") as UIViewController
-        self.present(vc, animated: true, completion: nil)
+       
 
     }
     @IBAction func didTapSettting(_ sender: Any) {
+   
         present(menu!, animated: true)
 
     }
@@ -99,35 +89,7 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     
     
-    class SettingListController: UITableViewController{
-        
-        var items = ["Edit Information", "Order History", "Contact Us"]
-        let lightColor = UIColor.white
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            tableView.backgroundColor = lightColor
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        }
-        
-        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return items.count
-        }
-        
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = items[indexPath.row]
-            cell.textLabel?.textColor = UIColor(red: 250/255.0, green: 10/255.0, blue: 10/255.0, alpha: 1)
-            cell.backgroundColor = lightColor
-            return cell
-        }
-        
-        override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 70
-        }
-        
-    }
-
+    
 
 
 

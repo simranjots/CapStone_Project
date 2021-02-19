@@ -8,10 +8,12 @@ import FirebaseFirestore
 
 class ADMenuTVC: UIViewController {
 
-
+    var selectedArray : [IndexPath] = [IndexPath]()
     var rowSelected : Int = 0
     var menuSetup = [MenuMC]()
     var id : String = ""
+    var ids : String = ""
+    let db = Firestore.firestore()
     
     @IBOutlet weak var menuTB: UITableView!
     override func viewDidLoad() {
@@ -50,28 +52,81 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
             ADMenuTVCell else { return UITableViewCell() }
 
     cell.configure(withProduct: menuSetup[indexPath.row])
+    if(menuSetup[indexPath.row].fav!)
+           {
+         cell.favImg.image = UIImage(named: "starfill")
+           }
+           else
+           {
+            cell.favImg.image = UIImage(named: "star")
+           }
 
     return cell
 }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+   
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+           UISwipeActionsConfiguration(actions:
+              [makeArchiveContextualAction(forRowAt: indexPath),
+               makeDeleteContextualAction(forRowAt: indexPath)])
         
-        let db = Firestore.firestore()
-        id = menuSetup[self.rowSelected].id!
-        if editingStyle == .delete {
-            menuSetup.remove(at: indexPath.row)
-            menuTB.deleteRows(at: [indexPath], with: .fade)
-            db.collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898")
-                .collection("Khanna Khazana").document(id).delete()
-            
-        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        rowSelected = indexPath.row
-                print(rowSelected)
-        performSegue(withIdentifier: "edit", sender: indexPath.row)
+            rowSelected = indexPath.row
+        let myCell = tableView.cellForRow(at: indexPath) as! ADMenuTVCell
+            myCell.favImg.image = UIImage(named: "starfill")
+            tableView.deselectRow(at: indexPath, animated: true)
+          
+            ids = menuSetup[rowSelected].id!
+       
+        let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana").document(ids)
+
+            if(!menuSetup[rowSelected].fav!)
+            {
+                
+               ref.updateData(["fav" : true])
+                    
+            }
+            else
+            {
+               ref.updateData(["fav" : false])
+            }
     }
     
+    func makeArchiveContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal,
+                                       title: "Edit")
+                                       { (contextualAction: UIContextualAction, swipeButton: UIView, completionHandler: (Bool) -> Void) in
+        self.rowSelected = indexPath.row
+        print(self.rowSelected)
+        self.performSegue(withIdentifier: "edit", sender: indexPath.row)
+        }
+          action.backgroundColor = .systemBlue
+          return action
+       }
+       
+       func makeDeleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+          UIContextualAction(style: .destructive,
+              title: "Delete") { (contextualAction: UIContextualAction, swipeButton: UIView, completionHandler: (Bool) -> Void) in
+            
+            
+            self.id = self.menuSetup[indexPath.row].id!
+
+            self.db.collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898")
+                .collection("Khanna Khazana").document(self.id).delete()
+            
+            self.menuSetup.remove(at: indexPath.row)
+            
+            self.menuTB.deleteRows(at: [indexPath], with: .fade)
+             
+
+              completionHandler(true)
+           }
+       }
+    
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let destVC = segue.destination as? AddEditDelete {
@@ -81,7 +136,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
             destVC.detail = menuSetup[self.rowSelected].description!
             destVC.price = menuSetup[self.rowSelected].price!
                 }
-           
+
     }
 
 }
