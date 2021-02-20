@@ -65,6 +65,7 @@
 		AE9C1C8725D7CB8C002CBEF3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9C1C8625D7CB8C002CBEF3 /* MobileCoreServices.framework */; };
 		AE9C1C8925D7CBA2002CBEF3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9C1C8825D7CBA2002CBEF3 /* SystemConfiguration.framework */; };
 		AE9C1C8B25D7CBAF002CBEF3 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9C1C8A25D7CBAF002CBEF3 /* SafariServices.framework */; };
+		AE9F470725E0D1DF00E91161 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F470625E0D1DF00E91161 /* DesignableView.swift */; };
 		AEE5F42F25D4AE3A00C9E705 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE5F42E25D4AE3A00C9E705 /* iOSDropDown.framework */; };
 		AEE5F43425D4E59C00C9E705 /* RestaurantRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE5F43325D4E59C00C9E705 /* RestaurantRegisterVC.swift */; };
 		C073F1CBA0482001D56894C6 /* Pods_IOS_Final_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BD46F5398F8394C9246344 /* Pods_IOS_Final_ProjectTests.framework */; };
@@ -163,6 +164,7 @@
 		AE9C1C8A25D7CBAF002CBEF3 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		AE9C1DD225D87791002CBEF3 /* Braintree-UIKit-Localization.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = "Braintree-UIKit-Localization.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9C1DD325D87791002CBEF3 /* BraintreeDropIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BraintreeDropIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE9F470625E0D1DF00E91161 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		AEE5F42E25D4AE3A00C9E705 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE5F43325D4E59C00C9E705 /* RestaurantRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRegisterVC.swift; sourceTree = "<group>"; };
 		F7BD46F5398F8394C9246344 /* Pods_IOS_Final_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Final_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +254,7 @@
 				47325DE4242EE95300490C31 /* Info.plist */,
 				AE95103B25CE4FFD00E70423 /* GoogleService-Info.plist */,
 				47325DDC242EE95200490C31 /* IOS_Final_Project.xcdatamodeld */,
+				AE9F470625E0D1DF00E91161 /* DesignableView.swift */,
 			);
 			path = IOS_Final_Project;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				472139A52435775400D9AB47 /* AddEditDelete.swift in Sources */,
 				AE95116B25D08ED200E70423 /* MenuTVCell.swift in Sources */,
 				AEE5F43425D4E59C00C9E705 /* RestaurantRegisterVC.swift in Sources */,
+				AE9F470725E0D1DF00E91161 /* DesignableView.swift in Sources */,
 				AE80A6D525DFAF5F00AE7B74 /* settingListTVC.swift in Sources */,
 				478DFBD024355DAC000B90BB /* ManagerDetailViewController.swift in Sources */,
 				AE95114F25D06B2E00E70423 /* uMenuTBCell.swift in Sources */,

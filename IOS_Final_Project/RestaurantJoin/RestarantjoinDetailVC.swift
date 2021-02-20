@@ -105,6 +105,8 @@ class RestarantjoinDetailVC: UIViewController{
                     self.payButton.setTitle("Joined", for: .normal)
                     self.payButton.backgroundColor = .systemGreen
                     
+                    
+                    
                    } else if error != nil {
                        // Handle error here...
                     self.payButton.setTitle("Join", for: .normal)
@@ -154,12 +156,12 @@ extension RestarantjoinDetailVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel!.text = "Cell \(indexPath.row)"
+        cell.textLabel!.text = "Tiffin Service Price is 50$"
         return cell
     }
 }

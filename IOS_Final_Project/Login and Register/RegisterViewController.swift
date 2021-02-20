@@ -114,18 +114,18 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
-
         guard let image = info[.editedImage] as? UIImage else {
             print("No image found")
             return
         }
-        UserImage.image = image
+        UserImage.image = UIImage(named: "star")
         // print out the image size as a test
         let imageupoad =  FirebaseFD()
         let img = self.UserImage
         let str = imageupoad.uploading(img: img!,id :self.userId) { (url) in
              print(url)
             self.imgUrl = url
+            self.UserImage.image = image
          }
       
         print(image.size)

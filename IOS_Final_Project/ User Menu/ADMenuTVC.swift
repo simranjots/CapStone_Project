@@ -100,6 +100,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
                                        { (contextualAction: UIContextualAction, swipeButton: UIView, completionHandler: (Bool) -> Void) in
         self.rowSelected = indexPath.row
         print(self.rowSelected)
+            print(self.menuSetup[self.rowSelected].imageLink!)
         self.performSegue(withIdentifier: "edit", sender: indexPath.row)
         }
           action.backgroundColor = .systemBlue

@@ -71,9 +71,44 @@ class AddEditDelete: UIViewController, UIImagePickerControllerDelegate & UINavig
     
     @IBAction func addBtnPressed(_ sender: UIButton) {
         if edit == "edit" {
-            EditData(Id: id)
+            let imageupoad =  FirebaseFD()
+            let img = self.mImage
+            let str = imageupoad.uploading(img: img!,id :self.dishId) { (url) in
+                 print(url)
+                if url != nil{
+                    self.imgUrl = url
+                    self.EditData(Id: self.id)
+                    
+                    self.view.makeToast("Image Uploaded")
+    
+                }else
+                {
+                    self.view.makeToast("Please wait Image Uploading")
+                }
+                
+             }
+          
+          
+         
         }else{
-            AddData()
+            
+            let imageupoad =  FirebaseFD()
+            let img = self.mImage
+            let str = imageupoad.uploading(img: img!,id :self.dishId) { (url) in
+                 print(url)
+                if url != nil{
+                    self.imgUrl = url
+                    self.AddData()
+                    
+                    self.view.makeToast("Image Uploaded")
+    
+                }else
+                {
+                    self.view.makeToast("Please wait Image Uploading")
+                }
+                
+             }
+            
         }
       
     }
@@ -109,7 +144,8 @@ class AddEditDelete: UIViewController, UIImagePickerControllerDelegate & UINavig
                             ] as [String : Any]
                             db.collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898")
                                 .collection("Khanna Khazana").document(self.dishId).setData(datas)
-                        }                            
+                            self.dismiss(animated: true, completion: nil)
+                        }
                         }
     }
     
@@ -135,6 +171,7 @@ class AddEditDelete: UIViewController, UIImagePickerControllerDelegate & UINavig
                             ] as [String : Any]
                             db.collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898")
                                 .collection("Khanna Khazana").document("\(Id)").setData(datas)
+                            self.dismiss(animated: true, completion: nil)
                             }
                             
                         }
@@ -149,13 +186,6 @@ class AddEditDelete: UIViewController, UIImagePickerControllerDelegate & UINavig
         }
         mImage.image = image
         // print out the image size as a test
-        let imageupoad =  FirebaseFD()
-        let img = self.mImage
-        let str = imageupoad.uploading(img: img!,id :self.dishId) { (url) in
-             print(url)
-            self.imgUrl = url
-         }
-      
         print(image.size)
     }
                 

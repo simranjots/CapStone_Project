@@ -14,7 +14,8 @@ class settingListVC: UITableViewController {
     
     var items = ["Profile Update", "Order History", "Restaurants List" , "Logout", "Contact Us", ]
     let lightColor = UIColor.white
-    var name :String = ""
+    var uName : String = ""
+    var imageUrl : String = ""
   
   
     override func viewDidLoad() {
@@ -33,9 +34,9 @@ class settingListVC: UITableViewController {
                        } else {
                            for document in snapshot!.documents {
                                print("\(document.documentID) => \(document.data() ["name"] as! String)")
-                             name = document.data() ["name"] as! String
-                            _ = document.data() ["password"] as! String
-                            print("hell \(name)")
+                            uName = document.data() ["name"] as! String
+                            imageUrl = document.data() ["imageLink"] as! String
+                            print("hell \(uName)")
                          
                         }
                         
@@ -64,11 +65,13 @@ class settingListVC: UITableViewController {
         let view = UIView()
         view.backgroundColor = .red
         let  image = UIImageView.init(frame: CGRect(x: 5,y: 5,width: 35,height: 35))
-        image.image = UIImage(named: "star")
+        image.sd_setImage(with: URL(string:imageUrl), placeholderImage: UIImage(named: "star"))
         view.addSubview(image)
         
         let label = UILabel()
-        label.text = "simmu"
+        label.backgroundColor = .white
+        label.textColor = .black
+        label.text = "(uName)"
         label.frame = CGRect(x: 45, y: 5, width: 100, height: 35)
         view.addSubview(label)
         
@@ -125,6 +128,26 @@ class settingListVC: UITableViewController {
          
             break
         }
+    }
+    func loadData() -> Void {
+        let user = UserDefaults.standard.string(forKey: "email")
+         print(user as Any)
+        Firestore.firestore().collection("Users").whereField("email", isEqualTo:user as Any)
+            .getDocuments() { [self] (snapshot, err) in
+                if let err = err {
+                           print("Error getting documents: \(err)")
+                       } else {
+                           for document in snapshot!.documents {
+                               print("\(document.documentID) => \(document.data() ["name"] as! String)")
+                            uName = document.data() ["name"] as! String
+                            imageUrl = document.data() ["imageLink"] as! String
+                            print("hell \(uName)")
+                         
+                        }
+                        
+             }
+         
+     }
     }
 
     }

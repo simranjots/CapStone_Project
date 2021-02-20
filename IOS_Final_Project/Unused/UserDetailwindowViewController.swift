@@ -13,21 +13,25 @@ class UserDetailwindowViewController: UIViewController {
     var uCar: Car?
     
    
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    var name :String = ""
+    var price :Float = 0
+    var detail :String = ""
+    var imgUrl :String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.uCar != nil
-        {
-            //dump(uColorLabel)
-            dump(uCar)
-            nameLabel.text = uCar?.getItemName()
-            detailLabel.text = uCar?.getItemDescription()
-            priceLabel.text = "\(uCar!.getPrice())"
-        }
+        
+            image.sd_setImage(with: URL(string:imgUrl), placeholderImage: UIImage(named: "image_1.png"))
+            nameLabel.text = name
+            detailLabel.text = detail
+            priceLabel.text = "\(price) $"
+        
     }
     
     

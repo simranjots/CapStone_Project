@@ -13,6 +13,7 @@ import Firebase
 class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
     var menuSetup = [MenuMC]()
+    var rowSelected : Int = 0
 
     @IBOutlet weak var UmenuTBV: UITableView!
   
@@ -38,10 +39,7 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     }
     
     
-    @IBAction func logoutbtn(_ sender: Any) {
-       
-
-    }
+    
     @IBAction func didTapSettting(_ sender: Any) {
    
         present(menu!, animated: true)
@@ -66,23 +64,25 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     }
  
         
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            self.uSelectedCar = self.menuSetup[indexPath.row]
-//            performSegue(withIdentifier: "itemDetails", sender: self)
-//        }
-//
-//        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//            return 120
-//        }
-//
-//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            if segue.identifier == "itemDetails"
-//            {
-//                if let udwvc = segue.destination as? UserDetailwindowViewController
-//                {
-//                    udwvc.uCar = self.uSelectedCar
-//                }
-//            }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.rowSelected = indexPath.row
+        print(self.rowSelected)
+            print(self.menuSetup[self.rowSelected].imageLink!)
+        self.performSegue(withIdentifier: "itemDetails", sender: indexPath.row)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let destVC = segue.destination as? UserDetailwindowViewController {
+          
+            destVC.name = menuSetup[self.rowSelected].name!
+            destVC.detail = menuSetup[self.rowSelected].description!
+            destVC.price = menuSetup[self.rowSelected].price!
+            destVC.imgUrl = menuSetup[self.rowSelected].imageLink!
+                }
+
+    }
         }
 
     
