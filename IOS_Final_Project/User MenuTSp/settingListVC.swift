@@ -59,6 +59,28 @@ class settingListVC: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+   
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .red
+        let  image = UIImageView.init(frame: CGRect(x: 5,y: 5,width: 35,height: 35))
+        image.image = UIImage(named: "star")
+        view.addSubview(image)
+        
+        let label = UILabel()
+        label.text = "simmu"
+        label.frame = CGRect(x: 45, y: 5, width: 100, height: 35)
+        view.addSubview(label)
+        
+        
+        return view
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
+    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {

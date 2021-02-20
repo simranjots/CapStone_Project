@@ -3,9 +3,11 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 
 class FirebaseFD {
     
+    var userUrl : URL?
     func fetchProducts(_ completion: @escaping ([MenuMC]) -> Void) {
         let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana")
          ref.addSnapshotListener { (snapshot, error) in
@@ -52,4 +54,25 @@ class FirebaseFD {
     }
     }
     
+    
+    func uploading( img : UIImageView,id : String, completion: @escaping ((String) -> Void)) {
+        var strURL = ""
+        let storageRef = Storage.storage().reference()
+        let storeImage = storageRef.child("images/\(id)")
+
+        if let uploadImageData = (img.image)!.pngData(){
+            storeImage.putData(uploadImageData, metadata: nil, completion: { (metaData, error) in
+                storeImage.downloadURL(completion: { (url, error) in
+                    if let urlText = url?.absoluteString {
+
+                        strURL = urlText
+                        print("///////////tttttttt//////// \(strURL)   ////////")
+
+                        completion(strURL)
+                    }
+                })
+            })
+        }
+    }
+      
 }

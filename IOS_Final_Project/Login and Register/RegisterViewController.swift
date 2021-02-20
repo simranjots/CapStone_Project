@@ -5,7 +5,7 @@ import FirebaseFirestore
 import Toast_Swift
 import iOSDropDown
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var name: UITextField!
@@ -15,8 +15,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var Address: UITextField!
     @IBOutlet weak var RgtBtn: UIButton!
     @IBOutlet weak var RstOwner: DropDown!
-    
-    
+    let userId = UUID().uuidString
+    var imgUrl : String = ""
      
     
     override func viewDidLoad() {
@@ -25,11 +25,29 @@ class RegisterViewController: UIViewController {
         RstOwner.optionArray = ["Yes", "No"]
         RstOwner.selectedRowColor = .secondarySystemBackground
         // Do any additional setup after loading the view.
-        
+        // create tap gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.imageTapped(gesture:)))
+
+        // add it to the image view;
+        UserImage.addGestureRecognizer(tapGesture)
+        // make sure imageView can be interacted with by user
+        UserImage.isUserInteractionEnabled = true
+
            }
-    override func viewWillAppear(_ animated: Bool) {
-        
+    
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        // if the tapped view is a UIImageView then set it to imageview
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped")
+            //Here you can initiate your new ViewController
+            let vc = UIImagePickerController()
+            vc.allowsEditing = true
+            vc.delegate = self
+            present(vc, animated: true)
+        }
     }
+    
+    
     @IBAction func Rgtbtn(_ sender: Any) {
         let n = name.text
         let p = Phone.text
@@ -46,7 +64,7 @@ class RegisterViewController: UIViewController {
         if rstown == "Yes" {
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "restDetails") as! RestaurantRegisterVC
-            vc.id = UUID().uuidString
+            vc.id = userId
             vc.name = n
             vc.phone = p
             vc.address = a
@@ -61,14 +79,12 @@ class RegisterViewController: UIViewController {
             if let email = Email.text, let password = Password.text {
                 signUpManager.createUser(email: email, password: password) {[weak self] (success,message) in
                     guard let `self` = self else { return }
-                    
-                    if (success) {
-                        
+                     if (success) {
                         let db = Firestore.firestore()
-                        let datas = ["Id":UUID().uuidString,
+                        let datas = ["Id":self.userId,
                             "name": n,
                             "email":email,
-                            "imageLink":"",
+                            "imageLink":"\(self.imgUrl)",
                             "password":password,
                             "phone":p,
                             "address":a,
@@ -96,6 +112,23 @@ class RegisterViewController: UIViewController {
         
     }
     }
-   
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+        UserImage.image = image
+        // print out the image size as a test
+        let imageupoad =  FirebaseFD()
+        let img = self.UserImage
+        let str = imageupoad.uploading(img: img!,id :self.userId) { (url) in
+             print(url)
+            self.imgUrl = url
+         }
+      
+        print(image.size)
+    }
    
 }

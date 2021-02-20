@@ -135,6 +135,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
             destVC.name = menuSetup[self.rowSelected].name!
             destVC.detail = menuSetup[self.rowSelected].description!
             destVC.price = menuSetup[self.rowSelected].price!
+            destVC.imgUrl = menuSetup[self.rowSelected].imageLink!
                 }
 
     }
