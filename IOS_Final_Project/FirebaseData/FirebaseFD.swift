@@ -8,8 +8,8 @@ import FirebaseStorage
 class FirebaseFD {
     
     var userUrl : URL?
-    func fetchProducts(_ completion: @escaping ([MenuMC]) -> Void) {
-        let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana")
+    func fetchProducts(id:String,name :String,completion: @escaping ([MenuMC]) -> Void) {
+        let ref = Firestore.firestore().collection("Menu").document(id).collection(name)
          ref.addSnapshotListener { (snapshot, error) in
         guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
             return
@@ -22,9 +22,9 @@ class FirebaseFD {
     
     
     
-    func FetchTodays(_ completion: @escaping ([MenuMC]) -> Void) {
-      
-        let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana").whereField("fav", isEqualTo: true)
+    func FetchTodays(id:String,name :String,completion: @escaping ([MenuMC]) -> Void) {
+        
+        let ref = Firestore.firestore().collection("Menu").document(id).collection(name).whereField("fav", isEqualTo: true)
         ref.addSnapshotListener { (snapshot, error) in
         if error != nil
         {
@@ -39,6 +39,60 @@ class FirebaseFD {
             
     }
     }
+    
+    func FetchTUserData(email: String,completion: @escaping ([userData]) -> Void) {
+      
+        let ref = Firestore.firestore().collection("Users").whereField("email", isEqualTo: email)
+        ref.addSnapshotListener { (snapshot, error) in
+        if error != nil
+        {
+            
+        }
+        else {
+            completion(snapshot!.documents.compactMap( {userData(dictionary: $0.data())} ))
+            return
+            
+        }
+
+            
+    }
+    }
+        
+  func FetchtManrData(email: String,completion: @escaping ([ManagerMC]) -> Void) {
+          
+            let ref = Firestore.firestore().collection("Owners").whereField("email", isEqualTo: email)
+            ref.addSnapshotListener { (snapshot, error) in
+            if error != nil
+            {
+                
+            }
+            else {
+                completion(snapshot!.documents.compactMap( {ManagerMC(dictionary: $0.data())} ))
+                return
+                
+            }
+
+                
+        }
+    }
+    func FetchtMangerData(id: String,completion: @escaping ([ManagerMC]) -> Void) {
+      
+        let ref = Firestore.firestore().collection("Owners").whereField("Id", isEqualTo: id)
+        ref.addSnapshotListener { (snapshot, error) in
+        if error != nil
+        {
+            
+        }
+        else {
+            completion(snapshot!.documents.compactMap( {ManagerMC(dictionary: $0.data())} ))
+            return
+            
+        }
+
+            
+    }
+    }
+    
     
     
     

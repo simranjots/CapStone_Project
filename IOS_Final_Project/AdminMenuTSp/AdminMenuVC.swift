@@ -10,11 +10,17 @@ import UIKit
 import CoreData
 import SideMenu
 import Firebase
+import Foundation
 
 class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
-    var picachu = ADMenuTVC()
-   
+    let fetchTodaySp = FirebaseFD()
+    var menuSetup = [MenuMC]()
+    var userSetup = [userData]()
+    var mSetup = [ManagerMC]()
+    var user : String? = ""
+    var rest_id :String? = ""
+    var rest_n :String? = ""
     
     @IBOutlet weak var UmenuTBV: UITableView!
     var uContext: NSManagedObjectContext?
@@ -40,11 +46,28 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let fetchTodaySp = FirebaseFD()
-            fetchTodaySp.FetchTodays { (products) in
-                self.picachu.menuSetup = products
-                        self.UmenuTBV.reloadData()
+        let em = UserDefaults.standard.string(forKey: "email")
+        print("email \(em)")
+        fetchTodaySp.FetchtManrData(email: em!, completion: { (users) in
+            self.mSetup = users
+            for employee in self.mSetup {
+                self.rest_id = employee.id
+                print("rest_id  :\(self.rest_id )")
             }
+            self.fetchTodaySp.FetchtMangerData(id: self.rest_id!) { (manager) in
+                self.mSetup = manager
+                for employee in self.mSetup {
+                    self.rest_n = employee.Rest_Name
+                    print("rest_n  :\(self.rest_n )")
+                }
+            
+            // Do any additional setup after loading the view.
+            self.fetchTodaySp.FetchTodays(id: self.rest_id!, name: self.rest_n!) { (products) in
+                        self.menuSetup = products
+                self.UmenuTBV.reloadData()
+            }
+            }
+        })
     }
     
 
@@ -55,7 +78,7 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if self.picachu.menuSetup.count == 0 {
+        if menuSetup.count == 0 {
             return 0
         }
         return 1
@@ -63,14 +86,14 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return self.picachu.menuSetup.count
+        return menuSetup.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "adminCell", for: indexPath) as! AdminMenuTBCell
        
       
-            cell.configure(withProduct: self.picachu.menuSetup[indexPath.row])
+            cell.configure(withProduct: menuSetup[indexPath.row])
         
         return cell
     }
@@ -102,7 +125,7 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     class SettingListControllers: UITableViewController{
         
-        var items = ["Edit Information", "Order History", "Contact Us"]
+        var items = ["Profile Update", "Order History", "Restaurants List" , "Logout", "Contact Us", ]
         let lightColor = UIColor.white
         
         override func viewDidLoad() {
@@ -126,7 +149,76 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 70
         }
+       
+        override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            
+            let view = UIView()
+            view.backgroundColor = .red
+            let  image = UIImageView.init(frame: CGRect(x: 5,y: 5,width: 35,height: 35))
+            image.sd_setImage(with: URL(string:"imageUrl"), placeholderImage: UIImage(named: "star"))
+            view.addSubview(image)
+            
+            let label = UILabel()
+            label.backgroundColor = .white
+            label.textColor = .black
+            label.text = ""
+            label.frame = CGRect(x: 45, y: 5, width: 100, height: 35)
+            view.addSubview(label)
+            
+            
+            return view
+        }
+        override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 45
+        }
+        override func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
         
+          override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+              switch indexPath.row {
+              case 0:
+                  let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                  let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "ThirdViewController") as UIViewController
+                  self.present(vc, animated: true, completion: nil)
+                  break
+
+              case 1:
+                
+
+                  break
+              case 2:
+                  let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                  let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "restJoinPage") as UIViewController
+                  self.present(vc, animated: true, completion: nil)
+
+                  break
+              case 3:
+                  
+                  do {
+                  try Auth.auth().signOut()
+                      print("logout")
+                      UserDefaults.standard.set(false, forKey: "adminsignedin")
+                      UserDefaults.standard.synchronize()
+                      let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                      let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "login") as UIViewController
+                      self.present(vc, animated: true, completion: nil)
+                  } catch let signOutError as NSError {
+                      print ("Error signing out: %@", signOutError)
+                      
+                  }
+                  break
+              case 4:
+                  let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                  let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "ThirdViewController") as UIViewController
+                  self.present(vc, animated: true, completion: nil)
+                  break
+                  
+              default:
+               
+                  break
+              }
+          }
     }
 
 

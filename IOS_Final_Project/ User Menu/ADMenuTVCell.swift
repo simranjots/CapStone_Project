@@ -11,7 +11,8 @@ class ADMenuTVCell: UITableViewCell {
     @IBOutlet weak var menuName: UILabel!
     @IBOutlet weak var menuPrice: UILabel!
     @IBOutlet weak var favImg: UIImageView!
-
+    @IBOutlet weak var details: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,7 +30,7 @@ class ADMenuTVCell: UITableViewCell {
        
         // Load the image using SDWebImage
         menuImg.sd_setImage(with: URL(string:menuItem.imageLink!), placeholderImage: UIImage(named: "image_1.png"))
-
+//        details.text = menuItem.description
 //        fetchImage(withURL: menuItem.imageLink! ) { (image) in
 //            self.menuImg.image = image
 //         }

@@ -8,6 +8,9 @@
 
 import UIKit
 import Braintree
+import Firebase
+import FirebaseFirestore
+
 
 class RestarantjoinDetailVC: UIViewController{
 
@@ -15,7 +18,12 @@ class RestarantjoinDetailVC: UIViewController{
     @IBOutlet weak var rstDetTV: UITableView!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet var payButton: UIButton!
-    
+  
+    var rest_Join_Id : String = ""
+    var ph : String = ""
+    var id : String = ""
+    var userSetup = [userData]()
+
     let maxHeaderHeight: CGFloat = 320
     
     let minHeaderHeight: CGFloat = 0
@@ -29,8 +37,8 @@ class RestarantjoinDetailVC: UIViewController{
     
     
     var braintreeClient: BTAPIClient?
-    
-    
+    let fetchRestData = UserMenuVC()
+    let em = UserDefaults.standard.string(forKey: "email")!
 
     
     override func viewDidLoad() {
@@ -40,7 +48,8 @@ class RestarantjoinDetailVC: UIViewController{
 
         self.rstDetTV.delegate = self
         self.rstDetTV.dataSource = self
-        
+        let check = UserMenuVC()
+       
        
         
         // Start with an initial value for the content size
@@ -54,7 +63,30 @@ class RestarantjoinDetailVC: UIViewController{
            super.viewWillAppear(animated)
            self.imageHeightConstraint.constant = self.maxHeaderHeight
      
+            userSetup = fetchRestData.userSetup
+            for employee in self.userSetup {
+                self.rest_Join_Id = employee.rest_Join_Id!
+                self.ph = employee.phone!
+                print("rest_n  :\(self.rest_Join_Id )")
+                print("rest_n  :\(self.ph )")
+        }
+            self.rstDetTV.reloadData()
+        
+        
+        if(rest_Join_Id != "")
+       {
+           self.payButton.setTitle("Joined", for: .normal)
+           self.payButton.backgroundColor = .systemGreen
+               
        }
+       else
+       {
+           self.payButton.setTitle("Joined", for: .normal)
+           self.payButton.backgroundColor = .systemBlue
+       }
+        }
+        
+       
     
     
     
@@ -104,8 +136,15 @@ class RestarantjoinDetailVC: UIViewController{
                     self.view.makeToast("Payment made Successfully by \(String(describing: firstName))")
                     self.payButton.setTitle("Joined", for: .normal)
                     self.payButton.backgroundColor = .systemGreen
-                    
-                    
+//                    let ref = Firestore.firestore().collection("Users").document(self.ph).updateData(["rest_Join_Id" : self.rest_Join_Id])
+//
+//                    if ref != nil {
+//                    self.present(RestaurantJoinTVC(), animated: true, completion: nil)
+//                    }
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "restJoinPage") as! RestaurantJoinTVC
+                    vc.rest = "vc"
+                    self.present(vc, animated: true, completion: nil)
                     
                    } else if error != nil {
                        // Handle error here...

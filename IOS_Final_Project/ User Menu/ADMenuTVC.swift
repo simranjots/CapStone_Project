@@ -14,17 +14,44 @@ class ADMenuTVC: UIViewController {
     var id : String = ""
     var ids : String = ""
     let db = Firestore.firestore()
+    let fetchTodaySp = FirebaseFD()
+    var userSetup = [userData]()
+    var mSetup = [ManagerMC]()
+    var user : String? = ""
+    var rest_id :String? = ""
+    var rest_n :String? = ""
     
     @IBOutlet weak var menuTB: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataFetch = FirebaseFD()
-        // Do any additional setup after loading the view.
-        dataFetch.fetchProducts { (products) in
-                    self.menuSetup = products
-                    self.menuTB.reloadData()
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let em = UserDefaults.standard.string(forKey: "email")
+        print("email \(em)")
+        fetchTodaySp.FetchtManrData(email: em!, completion: { (users) in
+            self.mSetup = users
+            for employee in self.mSetup {
+                self.rest_id = employee.id
+                print("rest_id  :\(self.rest_id )")
+            }
+            self.fetchTodaySp.FetchtMangerData(id: self.rest_id!) { (manager) in
+                self.mSetup = manager
+                for employee in self.mSetup {
+                    self.rest_n = employee.Rest_Name
+                    print("rest_n  :\(self.rest_n )")
                 }
+            
+            // Do any additional setup after loading the view.
+            self.fetchTodaySp.FetchTodays(id: self.rest_id!, name: self.rest_n!) { (products) in
+                        self.menuSetup = products
+                self.menuTB.reloadData()
+            }
+            }
+        })
     }
 
   
@@ -80,7 +107,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
           
             ids = menuSetup[rowSelected].id!
        
-        let ref = Firestore.firestore().collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898").collection("Khanna Khazana").document(ids)
+        let ref = Firestore.firestore().collection("Menu").document(rest_id!).collection(rest_n!).document(ids)
 
             if(!menuSetup[rowSelected].fav!)
             {
@@ -114,8 +141,8 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
             
             self.id = self.menuSetup[indexPath.row].id!
 
-            self.db.collection("Menu").document("DECFA19E-D418-4C95-A24B-F6D1F846D898")
-                .collection("Khanna Khazana").document(self.id).delete()
+            self.db.collection("Menu").document(self.rest_id!)
+                .collection(self.rest_n!).document(self.id).delete()
             
             self.menuSetup.remove(at: indexPath.row)
             

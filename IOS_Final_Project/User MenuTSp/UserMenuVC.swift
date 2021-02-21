@@ -12,8 +12,14 @@ import SideMenu
 import Firebase
 class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
 
+    let fetchTodaySp = FirebaseFD()
     var menuSetup = [MenuMC]()
     var rowSelected : Int = 0
+    var userSetup = [userData]()
+    var mSetup = [ManagerMC]()
+    var user : String? = ""
+    var rest_id :String? = ""
+    var rest_n :String? = ""
 
     @IBOutlet weak var UmenuTBV: UITableView!
   
@@ -30,12 +36,31 @@ class UserMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
 
-        let fetchTodaySp = FirebaseFD()
-        // Do any additional setup after loading the view.
-        fetchTodaySp.FetchTodays { (products) in
-                    self.menuSetup = products
+       
+            let em = UserDefaults.standard.string(forKey: "email")!
+            fetchTodaySp.FetchTUserData(email: em, completion: { (users) in
+                self.userSetup = users
+                for employee in self.userSetup {
+                    self.rest_id = employee.rest_Join_Id
+                    print("rest_id  :\(self.rest_id )")
+                }
+                self.fetchTodaySp.FetchtMangerData(id: self.rest_id!) { (manager) in
+                    self.mSetup = manager
+                    for employee in self.mSetup {
+                        self.rest_n = employee.Rest_Name
+                        print("rest_n  :\(self.rest_n )")
+                    }
+                
+                // Do any additional setup after loading the view.
+                self.fetchTodaySp.FetchTodays(id: self.rest_id!, name: self.rest_n!) { (products) in
+                            self.menuSetup = products
                     self.UmenuTBV.reloadData()
                 }
+                }
+            })
+           
+                
+       
     }
     
     

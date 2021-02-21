@@ -11,17 +11,19 @@ import Firebase
 
 class settingListVC: UITableViewController {
 
-    
+    @IBOutlet weak var stb: UITableView!
+    var userSetup = [userData]()
     var items = ["Profile Update", "Order History", "Restaurants List" , "Logout", "Contact Us", ]
     let lightColor = UIColor.white
-    var uName : String = ""
+    var uName : String? = ""
     var imageUrl : String = ""
-  
+   
   
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.systemGray2
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+      
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +64,7 @@ class settingListVC: UITableViewController {
     }
    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let view = UIView()
         view.backgroundColor = .red
         let  image = UIImageView.init(frame: CGRect(x: 5,y: 5,width: 35,height: 35))
@@ -71,7 +74,7 @@ class settingListVC: UITableViewController {
         let label = UILabel()
         label.backgroundColor = .white
         label.textColor = .black
-        label.text = "(uName)"
+        label.text = ""
         label.frame = CGRect(x: 45, y: 5, width: 100, height: 35)
         view.addSubview(label)
         

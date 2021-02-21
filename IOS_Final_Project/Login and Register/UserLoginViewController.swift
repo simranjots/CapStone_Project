@@ -5,14 +5,14 @@ import Toast_Swift
 
 class UserLoginViewController: UIViewController {
     
-    
+    var userSetup = [userData]()
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-    }
+     
+        }
     
     
     
@@ -29,12 +29,21 @@ class UserLoginViewController: UIViewController {
                 guard let `self` = self else { return }
                 
                 if (success) {
-                    UserDefaults.standard.set(true, forKey: "usersignedin")
-                    UserDefaults.standard.synchronize()
-                    self.view.makeToast(message)
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "menu") as UIViewController
-                    self.present(vc, animated: true, completion: nil)
+                    let fetchUD = FirebaseFD()
+                    // Do any additional setup after loading the view.
+//                        fetchUD.FetchTUserData(email: email) { (users) in
+//                        self.userSetup = users
+//                        }
+                       UserDefaults.standard.setValue(email, forKey: "email")
+                        UserDefaults.standard.set(true, forKey: "usersignedin")
+                        UserDefaults.standard.synchronize()
+                        self.view.makeToast(message)
+                        
+                        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "restJoinPage") as UIViewController
+                        self.present(vc, animated: true, completion: nil)
+                    
+                    
                 } else {
                     self.view.makeToast(message)
                 }
@@ -44,5 +53,6 @@ class UserLoginViewController: UIViewController {
     
         }
     }
+    
     
 }

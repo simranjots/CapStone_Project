@@ -3,36 +3,39 @@ import Foundation
 class userData {
 
 
-var id: Int?
+var id: String?
 var name: String?
 var password: String?
 var email: String?
-var phone: Int?
+var imageLink : String?
+var phone: String?
 var address: String?
-var r_Id:Int?
-
-
-    init(id: Int?,name: String?,password: String?,email: String?,phone: Int?,address: String?,r_Id:Int?){
+var rest_Join_Id:String?
+var rest_ownr:String?
+    
+    init(id: String?,name: String?,password: String?,email: String?,imageLink : String?,phone: String?,address: String?,rest_Join_Id:String?,rest_ownr:String?){
 
     self.id = id
     self.name = name
     self.password = password
     self.email = email
+    self.imageLink = imageLink
     self.phone = phone
     self.address = address
-    self.r_Id = r_Id
+    self.rest_Join_Id = rest_Join_Id
  
 
   }
     convenience init(dictionary: [String : Any]) {
-         let id = dictionary["id"] as? Int ?? 0
+         let id = dictionary["id"] as? String ?? ""
          let name = dictionary["name"] as? String ?? ""
          let password = dictionary["password"] as? String ?? ""
          let email = dictionary["email"] as? String ?? ""
-        let phone = dictionary["phone"] as? Int ?? 0
+         let imageLink =  dictionary["imageLink"] as? String ?? ""
+         let phone = dictionary["phone"] as? String ?? ""
          let address =  dictionary["address"] as? String ?? ""
-         let r_Id =  dictionary["r_Id"] as? Int ?? 0
-
-        self.init(id: id, name: name, password: password, email: email,phone: phone, address: address, r_Id: r_Id)
+         let rest_Join_Id =  dictionary["rest_Join_Id"] as? String ?? ""
+        let rest_ownr =  dictionary["rest_ownr"] as? String ?? ""
+        self.init(id: id, name: name, password: password, email: email,imageLink: imageLink,phone: phone, address: address, rest_Join_Id: rest_Join_Id,rest_ownr:rest_ownr)
      }
  }

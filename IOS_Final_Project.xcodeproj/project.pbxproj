@@ -340,7 +340,6 @@
 		AE1D018025D8CDEE00EA6E9D /* Unused */ = {
 			isa = PBXGroup;
 			children = (
-				4734E949242FE01F007614C4 /* UserDetailwindowViewController.swift */,
 				2BA3E97C24F487EE003702D5 /* Menu.swift */,
 				9079B67A2436DB2100D3165D /* Car.swift */,
 				2B315AB224F5759600290061 /* Order.swift */,
@@ -400,6 +399,7 @@
 		AE9510CC25CFA93500E70423 /* User MenuTSp */ = {
 			isa = PBXGroup;
 			children = (
+				4734E949242FE01F007614C4 /* UserDetailwindowViewController.swift */,
 				AE95112B25D067C200E70423 /* UserMenuVC.swift */,
 				AE95114E25D06B2E00E70423 /* uMenuTBCell.swift */,
 				AE80A6CF25DFAF1600AE7B74 /* settingListVC.swift */,

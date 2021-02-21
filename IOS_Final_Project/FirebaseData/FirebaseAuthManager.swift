@@ -73,7 +73,7 @@ class FirebaseAuthManager {
                 completionBlock(false,Error ?? "Invalid email address" )
             } else {
                 let userEmail = Auth.auth().currentUser?.email
-                UserDefaults.standard.setValue(userEmail, forKey: "email")
+               
                 Error = "User Sign In sucessfully ."
                
                 completionBlock(true,Error!)

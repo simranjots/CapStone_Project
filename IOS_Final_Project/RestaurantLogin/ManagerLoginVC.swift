@@ -52,6 +52,7 @@ class ManagerLoginVC: UIViewController {
                                 print("hell \(e)")
                              
                                 if  (e == username.text && p == password.text ){
+                                    UserDefaults.standard.setValue(e, forKey: "email")
                                     UserDefaults.standard.set(true, forKey: "adminsignedin")
                                     UserDefaults.standard.synchronize()
                                     self.view.makeToast("Successful")

@@ -37,7 +37,7 @@ var Rest_NumofLoc :String?
          let password = dictionary["password"] as? String ?? ""
          let email = dictionary["email"] as? String ?? ""
          let phone = dictionary["phone"] as? String ?? ""
-        let address =  dictionary["address"] as? String ?? ""
+         let address =  dictionary["address"] as? String ?? ""
          let Rest_Name =  dictionary["Rest_Name"] as? String ?? ""
          let Rest_ownr =  dictionary["Rest_ownr"] as? String ?? ""
          let Rest_Loc =  dictionary["Rest_Loc"] as? String ?? ""
