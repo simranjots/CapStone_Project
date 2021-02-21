@@ -374,13 +374,13 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRM-xZ-GcQ">
                                 <rect key="frame" x="64" y="793" width="242" height="36"/>
-                                <color key="backgroundColor" red="0.27682288316979514" green="0.86684375999999996" blue="0.55189461537671469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.87388855219999995" green="0.74995011089999997" blue="0.40836769340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="0sV-hF-cZh"/>
                                     <constraint firstAttribute="width" constant="242" id="Q40-g7-b9F"/>
                                 </constraints>
                                 <state key="normal" title="Register">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -975,7 +975,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usm-AB-UiQ">
-                                <rect key="frame" x="20" y="289" width="374" height="91"/>
+                                <rect key="frame" x="20" y="144" width="374" height="236"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Welcome ">
                                         <attributes>
@@ -1019,7 +1019,7 @@
                             <constraint firstItem="ONJ-Bk-sLd" firstAttribute="trailing" secondItem="HL0-kc-z33" secondAttribute="trailing" id="ddl-UR-rtj"/>
                             <constraint firstItem="HL0-kc-z33" firstAttribute="trailing" secondItem="rG3-pP-JxZ" secondAttribute="trailing" id="sWO-e8-pvP"/>
                             <constraint firstItem="Usm-AB-UiQ" firstAttribute="leading" secondItem="rtN-UT-zOU" secondAttribute="leadingMargin" id="tWn-vh-yc5"/>
-                            <constraint firstItem="Usm-AB-UiQ" firstAttribute="top" secondItem="HL0-kc-z33" secondAttribute="top" constant="245" id="v92-dE-GNB"/>
+                            <constraint firstItem="Usm-AB-UiQ" firstAttribute="top" secondItem="HL0-kc-z33" secondAttribute="top" constant="100" id="v92-dE-GNB"/>
                             <constraint firstAttribute="bottom" secondItem="ONJ-Bk-sLd" secondAttribute="bottom" id="vaN-SG-POf"/>
                             <constraint firstItem="Usm-AB-UiQ" firstAttribute="centerX" secondItem="rG3-pP-JxZ" secondAttribute="centerX" id="xtm-zx-Dx0"/>
                         </constraints>
@@ -1774,7 +1774,7 @@
                                     <constraint firstAttribute="width" constant="105" id="PDx-Pu-c2Q"/>
                                 </constraints>
                                 <state key="normal" title="Send">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.87388855219999995" green="0.74995011089999997" blue="0.40836769340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="sndbtn:" destination="fi6-Ai-wOF" eventType="touchUpInside" id="6lE-hI-dM3"/>

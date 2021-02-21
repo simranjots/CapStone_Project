@@ -111,7 +111,7 @@ class settingListVC: UITableViewController {
                 UserDefaults.standard.set(false, forKey: "usersignedin")
                 UserDefaults.standard.synchronize()
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "uLogin") as UIViewController
+                let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "login") as UIViewController
                 self.present(vc, animated: true, completion: nil)
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
