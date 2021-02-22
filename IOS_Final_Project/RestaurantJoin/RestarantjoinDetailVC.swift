@@ -20,6 +20,7 @@ class RestarantjoinDetailVC: UIViewController{
     @IBOutlet var payButton: UIButton!
   
     var rest_Join_Id : String = ""
+    var image = ""
     var ph : String = ""
     var id : String = ""
     var userSetup = [userData]()
@@ -45,7 +46,7 @@ class RestarantjoinDetailVC: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
        navigationController?.navigationBar.prefersLargeTitles = true
-
+        rstDetail_IV.sd_setImage(with: URL(string:image), placeholderImage: UIImage(named: "rest"))
         self.rstDetTV.delegate = self
         self.rstDetTV.dataSource = self
         let check = UserMenuVC()
@@ -62,7 +63,7 @@ class RestarantjoinDetailVC: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
            self.imageHeightConstraint.constant = self.maxHeaderHeight
-     
+        
             userSetup = fetchRestData.userSetup
             for employee in self.userSetup {
                 self.rest_Join_Id = employee.rest_Join_Id!

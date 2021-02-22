@@ -47,18 +47,19 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let em = UserDefaults.standard.string(forKey: "email")
-        print("email \(em)")
+        print("email \(String(describing: em))")
         fetchTodaySp.FetchtManrData(email: em!, completion: { (users) in
             self.mSetup = users
             for employee in self.mSetup {
-                self.rest_id = employee.id
-                print("rest_id  :\(self.rest_id )")
+                self.rest_id = employee.Id
+                self.rest_n = employee.Rest_Name
+                print("rest_id  :\(String(describing: self.rest_id) )")
             }
             self.fetchTodaySp.FetchtMangerData(id: self.rest_id!) { (manager) in
                 self.mSetup = manager
                 for employee in self.mSetup {
                     self.rest_n = employee.Rest_Name
-                    print("rest_n  :\(self.rest_n )")
+                    print("rest_n  :\(String(describing: self.rest_n) )")
                 }
             
             // Do any additional setup after loading the view.
@@ -126,7 +127,7 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     class SettingListControllers: UITableViewController{
         
         var items = ["Profile Update", "Order History", "Restaurants List" , "Logout", "Contact Us", ]
-        let lightColor = UIColor.white
+        let lightColor = UIColor.lightGray
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -141,7 +142,7 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = items[indexPath.row]
-            cell.textLabel?.textColor = UIColor(red: 250/255.0, green: 10/255.0, blue: 10/255.0, alpha: 1)
+            cell.textLabel?.textColor = .systemYellow
             cell.backgroundColor = lightColor
             return cell
         }
@@ -153,15 +154,14 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
         override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             
             let view = UIView()
-            view.backgroundColor = .red
+            view.backgroundColor = .systemYellow
             let  image = UIImageView.init(frame: CGRect(x: 5,y: 5,width: 35,height: 35))
-            image.sd_setImage(with: URL(string:"imageUrl"), placeholderImage: UIImage(named: "star"))
+            image.sd_setImage(with: URL(string:"imageUrl"), placeholderImage: UIImage(named: "homefoods"))
             view.addSubview(image)
             
             let label = UILabel()
-            label.backgroundColor = .white
-            label.textColor = .black
-            label.text = ""
+            label.textColor = .darkGray
+            label.text = "HomeFood"
             label.frame = CGRect(x: 45, y: 5, width: 100, height: 35)
             view.addSubview(label)
             

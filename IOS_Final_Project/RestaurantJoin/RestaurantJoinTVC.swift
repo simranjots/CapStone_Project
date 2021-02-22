@@ -83,7 +83,7 @@ extension RestaurantJoinTVC: UITableViewDelegate, UITableViewDataSource {
         if let destVC = segue.destination as? RestarantjoinDetailVC {
           
             destVC.id = restJoin[self.rowSelected].id!
-            
+            destVC.image = restJoin[self.rowSelected].imageLink!
                 }
 
     } }

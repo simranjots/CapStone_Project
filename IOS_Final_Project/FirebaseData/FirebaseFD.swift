@@ -11,13 +11,28 @@ class FirebaseFD {
     func fetchProducts(id:String,name :String,completion: @escaping ([MenuMC]) -> Void) {
         let ref = Firestore.firestore().collection("Menu").document(id).collection(name)
          ref.addSnapshotListener { (snapshot, error) in
-        guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
-            return
+            if error != nil
+            {
+                
+            }
+            else {
+                
+                for document in snapshot!.documents {
+                    print("\(document.documentID) => \(document.data() ["id"] as! String)")
+                 let e = document.data() ["description"] as! String
+                 let p = document.data() ["id"] as! String
+                 print("hell \(e)")
+                    print("hell \(e)")
+                }
+                completion(snapshot!.documents.compactMap( {MenuMC(dictionary: $0.data())} ))
             
-        }
+                return
+                
+            }
 
-        completion(snapshot.documents.compactMap( {MenuMC(dictionary: $0.data())} ))
-    }
+                
+        }
+       
     }
     
     
@@ -60,13 +75,20 @@ class FirebaseFD {
         
   func FetchtManrData(email: String,completion: @escaping ([ManagerMC]) -> Void) {
           
-            let ref = Firestore.firestore().collection("Owners").whereField("email", isEqualTo: email)
+            let ref = Firestore.firestore().collection("Owners").whereField("Email", isEqualTo: email)
             ref.addSnapshotListener { (snapshot, error) in
             if error != nil
             {
                 
             }
             else {
+                
+                for document in snapshot!.documents {
+                    print("\(document.documentID) => \(document.data() ["Id"] as! String)")
+                 let e = document.data() ["Email"] as! String
+                 let p = document.data() ["Password"] as! String
+                 print("hell \(e)")
+                }
                 completion(snapshot!.documents.compactMap( {ManagerMC(dictionary: $0.data())} ))
                 return
                 
@@ -99,13 +121,26 @@ class FirebaseFD {
     func fetchRestaurants(_ completion: @escaping ([RestaurentJoinMC]) -> Void) {
         let ref = Firestore.firestore().collection("Restaurants")
         ref.addSnapshotListener { (snapshot, error) in
-        guard error == nil, let snapshot = snapshot, !snapshot.isEmpty else {
-            return
-            
-        }
+            if error != nil
+            {
+                
+            }
+            else {
+                
+                for document in snapshot!.documents {
+                    print("\(document.documentID) => \(document.data() ["id"] as! String)")
+                 let e = document.data() ["imageLink"] as! String
+                 let p = document.data() ["id"] as! String
+                 print("hell \(e)")
+                    print("hell \(e)")
+                }
+                completion(snapshot!.documents.compactMap( {RestaurentJoinMC(dictionary: $0.data())} ))
 
-        completion(snapshot.documents.compactMap( {RestaurentJoinMC(dictionary: $0.data())} ))
-    }
+                return
+                
+         
+            }
+        }
     }
     
     
@@ -116,17 +151,25 @@ class FirebaseFD {
 
         if let uploadImageData = (img.image)!.pngData(){
             storeImage.putData(uploadImageData, metadata: nil, completion: { (metaData, error) in
-                storeImage.downloadURL(completion: { (url, error) in
-                    if let urlText = url?.absoluteString {
+                storeImage.downloadURL { (URL, error) -> Void in
+                  if (error != nil) {
+                    // Handle any errors
+                    print(error)
+                  } else {
+                    // Get the download URL for 'images/stars.jpg'
 
-                        strURL = urlText
-                        print("///////////tttttttt//////// \(strURL)   ////////")
+                      strURL = URL!.absoluteString
+                    print(strURL)
 
-                        completion(strURL)
-                    }
-                })
+                    completion(strURL)
+                   // you will get the String of Url
+                  }
+                }
+               
             })
         }
+        
     }
-      
-}
+    }
+
+

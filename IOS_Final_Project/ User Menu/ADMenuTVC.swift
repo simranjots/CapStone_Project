@@ -18,8 +18,8 @@ class ADMenuTVC: UIViewController {
     var userSetup = [userData]()
     var mSetup = [ManagerMC]()
     var user : String? = ""
-    var rest_id :String? = ""
-    var rest_n :String? = ""
+    var rest_id :String = ""
+    var rest_n :String = ""
     
     @IBOutlet weak var menuTB: UITableView!
     override func viewDidLoad() {
@@ -35,25 +35,18 @@ class ADMenuTVC: UIViewController {
         fetchTodaySp.FetchtManrData(email: em!, completion: { (users) in
             self.mSetup = users
             for employee in self.mSetup {
-                self.rest_id = employee.id
+                self.rest_id = employee.Id!
+                self.rest_n = employee.Rest_Name!
                 print("rest_id  :\(self.rest_id )")
             }
-            self.fetchTodaySp.FetchtMangerData(id: self.rest_id!) { (manager) in
-                self.mSetup = manager
-                for employee in self.mSetup {
-                    self.rest_n = employee.Rest_Name
-                    print("rest_n  :\(self.rest_n )")
-                }
-            
             // Do any additional setup after loading the view.
-            self.fetchTodaySp.FetchTodays(id: self.rest_id!, name: self.rest_n!) { (products) in
+            self.fetchTodaySp.fetchProducts(id: self.rest_id, name: self.rest_n) { (products) in
                         self.menuSetup = products
                 self.menuTB.reloadData()
             }
-            }
+            
         })
     }
-
   
     @IBAction func addData(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -107,7 +100,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
           
             ids = menuSetup[rowSelected].id!
        
-        let ref = Firestore.firestore().collection("Menu").document(rest_id!).collection(rest_n!).document(ids)
+        let ref = Firestore.firestore().collection("Menu").document(rest_id).collection(rest_n).document(ids)
 
             if(!menuSetup[rowSelected].fav!)
             {
@@ -141,8 +134,8 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
             
             self.id = self.menuSetup[indexPath.row].id!
 
-            self.db.collection("Menu").document(self.rest_id!)
-                .collection(self.rest_n!).document(self.id).delete()
+            self.db.collection("Menu").document(self.rest_id)
+                .collection(self.rest_n).document(self.id).delete()
             
             self.menuSetup.remove(at: indexPath.row)
             
