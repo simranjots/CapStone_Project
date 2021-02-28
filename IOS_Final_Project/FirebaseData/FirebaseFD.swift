@@ -17,14 +17,14 @@ class FirebaseFD {
             }
             else {
                 
-                for document in snapshot!.documents {
-                    print("\(document.documentID) => \(document.data() ["id"] as! String)")
-                 let e = document.data() ["description"] as! String
-                 let p = document.data() ["id"] as! String
-                 print("hell \(e)")
-                    print("hell \(e)")
-                }
-                completion(snapshot!.documents.compactMap( {MenuMC(dictionary: $0.data())} ))
+//                for document in snapshot!.documents {
+//                    print("\(document.documentID) => \(document.data() ["id"] as! String)")
+//                 let e = document.data() ["description"] as! String
+//                 let p = document.data() ["id"] as! String
+//                 print("hell \(e)")
+//                    print("hell \(e)")
+//                }
+           completion(snapshot!.documents.compactMap( {MenuMC(dictionary: $0.data())} ))
             
                 return
                 

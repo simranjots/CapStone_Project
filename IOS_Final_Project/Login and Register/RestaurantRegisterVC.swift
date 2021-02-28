@@ -14,7 +14,7 @@ class RestaurantRegisterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        hideKeyboardWhenTappedAround()
           stepper.wraps = true
           stepper.autorepeat = true
           stepper.maximumValue = 10

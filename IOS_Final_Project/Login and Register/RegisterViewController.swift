@@ -21,6 +21,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         // The list of array to display. Can be changed dynamically
         RstOwner.optionArray = ["Yes", "No"]
         RstOwner.selectedRowColor = .secondarySystemBackground
@@ -34,7 +37,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate 
         UserImage.isUserInteractionEnabled = true
 
            }
-    
+  
     @objc func imageTapped(gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
         if (gesture.view as? UIImageView) != nil {
@@ -140,3 +143,4 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate 
     }
    
 }
+

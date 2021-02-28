@@ -35,6 +35,9 @@ class AddEditDelete: UIViewController, UIImagePickerControllerDelegate & UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // create tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddEditDelete.imageTapped(gesture:)))
@@ -131,7 +134,7 @@ class AddEditDelete: UIViewController, UIImagePickerControllerDelegate & UINavig
                 }
                 
              }
-            self.AddData()
+        
         }
       
     }

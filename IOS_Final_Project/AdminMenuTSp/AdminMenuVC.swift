@@ -126,7 +126,7 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
     class SettingListControllers: UITableViewController{
         
-        var items = ["Profile Update", "Order History", "Restaurants List" , "Logout", "Contact Us", ]
+        var items = ["Profile Update", "Users List", "Logout", "Contact Us", ]
         let lightColor = UIColor.lightGray
         
         override func viewDidLoad() {
@@ -187,13 +187,8 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
                 
 
                   break
+             
               case 2:
-                  let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                  let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "restJoinPage") as UIViewController
-                  self.present(vc, animated: true, completion: nil)
-
-                  break
-              case 3:
                   
                   do {
                   try Auth.auth().signOut()
@@ -208,7 +203,7 @@ class AdminMenuVC: UIViewController,UITableViewDelegate, UITableViewDataSource{
                       
                   }
                   break
-              case 4:
+              case 3:
                   let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                   let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "ThirdViewController") as UIViewController
                   self.present(vc, animated: true, completion: nil)

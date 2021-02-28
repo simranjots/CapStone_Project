@@ -9,7 +9,7 @@ class ResetPassViewController: UIViewController {
     @IBOutlet weak var resetEmail: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
